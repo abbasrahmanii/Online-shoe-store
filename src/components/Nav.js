@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Store } from "../context/Store";
 
-const Nav = ({ info }) => {
+const Nav = () => {
+  const { state, dispatch } = useContext(Store);
+  const { cityData } = state;
   return (
-    <NavStyles className="bg-gray-400 flex justify-between p-5">
-      <Link to="">
-        <h1>Home</h1>
-      </Link>
+    <NavStyles className="bg-indigo-900 flex justify-between p-5 sticky top-0 left-0 shadow-lg px-8">
+      <h5
+        className="text-white cursor-pointer"
+        onClick={() => dispatch({ type: "MENU" })}
+      >
+        Menu
+      </h5>
       <ul className="flex gap-6">
-        {info.map((data) => (
-          <div key={data.id}>
+        <li>
+          <Link to="/">
+            <h1 className="text-white">Home</h1>
+          </Link>
+        </li>
+        {cityData.map((data) => (
+          <li key={data.id}>
             <Link to={data.url}>
-              <h5>{data.name}</h5>
+              <h5 className="text-white">{data.name}</h5>
             </Link>
-          </div>
+          </li>
         ))}
-        <Link to="/form">
-          <h5>form</h5>
-        </Link>
+        <li>
+          <Link to="/form">
+            <h1 className="text-white">Form</h1>
+          </Link>
+        </li>
       </ul>
     </NavStyles>
   );

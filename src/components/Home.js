@@ -1,39 +1,51 @@
-import React from "react";
-import data from "../util/dummy-data";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Store } from "../context/Store";
+import Nav from "./Nav";
+import Menu from "./Menu";
 
 import { pageAnim, imageAnim, descAnim } from "./animation";
 
 const Home = () => {
-  const citiesInfo = data();
+  const { state } = useContext(Store);
+  const { cityData } = state;
 
   return (
-    <HomeStyles variants={pageAnim} initial="hidden" animate="show" exit="exit">
-      {citiesInfo.map((data) => (
-        <City key={data.id}>
-          <Hide>
-            <Image
-              variants={imageAnim}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            >
-              <img src={data.images[0]} alt={data.name} />
-            </Image>
-          </Hide>
-          <Hide>
-            <Desc variants={descAnim} initial="hidden" animate="show">
-              <h1>{data.name}</h1>
-              <h3>{data.country}</h3>
-              <p>{data.desc}</p>
-              <Link to={data.url}>Read More ...</Link>
-            </Desc>
-          </Hide>
-        </City>
-      ))}
-    </HomeStyles>
+    <>
+      <Nav />
+      <Menu />
+      <HomeStyles
+        variants={pageAnim}
+        initial="hidden"
+        animate="show"
+        exit="exit"
+      >
+        {cityData.map((data) => (
+          <City key={data.id}>
+            <Hide>
+              <Image
+                variants={imageAnim}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                <img src={data.images[0]} alt={data.name} />
+              </Image>
+            </Hide>
+            <Hide>
+              <Desc variants={descAnim} initial="hidden" animate="show">
+                <h1>{data.name}</h1>
+                <h3>{data.country}</h3>
+                <p>{data.desc}</p>
+                <Link to={data.url}>Read More ...</Link>
+              </Desc>
+            </Hide>
+          </City>
+        ))}
+      </HomeStyles>
+    </>
   );
 };
 
