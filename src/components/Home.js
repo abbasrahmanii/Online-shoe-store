@@ -24,24 +24,27 @@ const Home = () => {
       >
         {cityData.map((data) => (
           <City key={data.id}>
-            <Hide>
-              <Image
-                variants={imageAnim}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-              >
-                <img src={data.images[0]} alt={data.name} />
-              </Image>
-            </Hide>
-            <Hide>
-              <Desc variants={descAnim} initial="hidden" animate="show">
+            <Image
+              variants={imageAnim}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            >
+              <img src={data.images[0]} alt={data.name} />
+            </Image>
+            <Desc variants={descAnim} initial="hidden" animate="show">
+              <Hide>
                 <h1>{data.name}</h1>
                 <h3>{data.country}</h3>
                 <p>{data.desc}</p>
-                <Link to={data.url}>Read More ...</Link>
-              </Desc>
-            </Hide>
+                <Link
+                  to={data.url}
+                  className="bg-fuchsia-700 shadow-lg shadow-fuchsia-700/50 rounded-l-full rounded-t-full"
+                >
+                  Read More ...
+                </Link>
+              </Hide>
+            </Desc>
           </City>
         ))}
       </HomeStyles>
@@ -60,6 +63,7 @@ const HomeStyles = styled(motion.div)`
 `;
 const City = styled.div`
   width: 100%;
+  height: 100%;
   min-height: 20rem;
   display: flex;
   flex-wrap: wrap;
@@ -69,9 +73,10 @@ const City = styled.div`
 `;
 
 const Image = styled(motion.div)`
-  min-width: 40rem;
-  height: 25rem;
   flex: 1;
+  min-width: 35rem;
+  height: auto;
+  z-index: 50;
   img {
     width: 100%;
     height: 100%;
@@ -81,6 +86,8 @@ const Image = styled(motion.div)`
 
 const Desc = styled(motion.div)`
   flex: 1;
+  width: 35rem;
+  min-height: auto;
   margin-left: 3rem;
   h1 {
     font-size: 3rem;
@@ -112,7 +119,7 @@ const Desc = styled(motion.div)`
 
 const Hide = styled.div`
   overflow: hidden;
-  flex: 1;
+  height: 100%;
 `;
 
 export default Home;

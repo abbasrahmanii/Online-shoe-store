@@ -18,6 +18,7 @@ const DUMMY_DATA = () => {
       images: [paris1, paris2, paris3],
       url: "/paris",
       desc: "Veniam reprehenderit proident commodo eiusmod proident sit ea minim duis non. Deserunt et pariatur esse. anim proident ullamco est id culpa duis. Iruream culpa cillum ullamco. Enim ipsum officia amet laboris Lorem veniam nisi occaecat. Enim ipsum officia amet laboris Lorem veniam nisi occaecat.",
+      color: "cyan",
     },
     {
       id: 2,
@@ -26,6 +27,7 @@ const DUMMY_DATA = () => {
       images: [venice1, venice2, venice3],
       url: "/venice",
       desc: "Veniam reprehenderit proident commodo eiusmod proident sit ea minim duis non. Deserunt et pariatur esse. anim proident ullamco est id culpa duis. Iruream culpa cillum ullamco. Enim ipsum officia amet laboris Lorem veniam nisi occaecat. Enim ipsum officia amet laboris Lorem veniam nisi occaecat.",
+      color: "indigo",
     },
     {
       id: 3,
@@ -34,6 +36,7 @@ const DUMMY_DATA = () => {
       images: [london1, london2, london3],
       url: "/london",
       desc: "Veniam reprehenderit proident commodo eiusmod proident sit ea minim duis non. Deserunt et pariatur esse. anim proident ullamco est id culpa duis. Iruream culpa cillum ullamco. Enim ipsum officia amet laboris Lorem veniam nisi occaecat. Enim ipsum officia amet laboris Lorem veniam nisi occaecat.",
+      color: "rose",
     },
   ];
 };

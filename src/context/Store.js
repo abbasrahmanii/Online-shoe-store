@@ -5,6 +5,7 @@ export const Store = createContext();
 
 const initialState = {
   MenuStatus: false,
+  page: "Home",
   cityData: data(),
 };
 
@@ -14,6 +15,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         MenuStatus: !state.MenuStatus,
+      };
+    case "PAGE_TOGGLE":
+      return {
+        ...state,
+        page: action.payload,
       };
     default:
       return state;

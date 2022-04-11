@@ -9,7 +9,7 @@ import Menu from "./Menu";
 
 const City = () => {
   const { state } = useContext(Store);
-  const { cityData, MenuStatus } = state;
+  const { cityData } = state;
 
   const { pathname } = useLocation();
   const currentInfo = cityData.find((data) => data.url === pathname);
@@ -24,18 +24,20 @@ const City = () => {
         exit="exit"
       >
         <h1>{currentInfo.name}</h1>
-        <h3 className="text-white font-sans mb-4">{currentInfo.country}</h3>
-        <p className="mb-6 mx-10 text-center text-gray-200">
+        <h3 className="text-white font-sans mb-4 drop-shadow-lg">
+          {currentInfo.country}
+        </h3>
+        <p className="mb-6 mx-10 text-center text-gray-200 ">
           {currentInfo.desc}
         </p>
         <div className="flex gap-5 justify-between items-stretch">
-          <Images>
+          <Images className="shadow-md shadow-indigo-500/50">
             <img src={currentInfo.images[0]} alt={currentInfo.images[0]} />
           </Images>
-          <Images>
+          <Images className="shadow-md shadow-indigo-500/50">
             <img src={currentInfo.images[1]} alt={currentInfo.images[1]} />
           </Images>
-          <Images>
+          <Images className="shadow-md shadow-indigo-500/50">
             <img src={currentInfo.images[2]} alt={currentInfo.images[2]} />
           </Images>
         </div>
