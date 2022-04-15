@@ -47,3 +47,17 @@ export const imageAnim = {
     transition: { duration: 0.75, ease: "easeOut" },
   },
 };
+
+export const navBorder = {
+  hidden: {
+    width: 0,
+  },
+  show: {
+    width: "100%",
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+  exit: {
+    width: 0,
+    transition: { duration: 0.75, ease: "easeOut" },
+  },
+};

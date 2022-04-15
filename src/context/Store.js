@@ -1,25 +1,58 @@
 import React, { createContext, useReducer } from "react";
+import Cookies from "js-cookie";
 import data from "../util/dummy-data";
 
 export const Store = createContext();
 
 const initialState = {
-  MenuStatus: false,
-  page: "Home",
-  cityData: data(),
+  menuStatus: Cookies.get("menuStatus")
+    ? JSON.parse(Cookies.get("menuStatus"))
+    : false,
+  cityData: data().cities,
+  products: data().products,
+  cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "MENU":
+    case "MENU_TOGGLE":
+      Cookies.set("menuStatus", JSON.stringify(!state.menuStatus));
       return {
         ...state,
-        MenuStatus: !state.MenuStatus,
+        menuStatus: !state.menuStatus,
       };
-    case "PAGE_TOGGLE":
+    case "ADD_TO_CART":
+      const newProduct = action.payload;
+      const cartItems =
+        newProduct.quantity > 1
+          ? state.cart.map((item) =>
+              item.id === newProduct.id ? newProduct : item
+            )
+          : [...state.cart, newProduct];
+      // Cookies.set("cart", JSON.stringify(cartItems));
+      Cookies.set("cart", JSON.stringify(cartItems));
       return {
         ...state,
-        page: action.payload,
+        cart: cartItems.sort((a, b) => a.id - b.id),
+      };
+    case "DELETE_CART":
+      const selectedProduct = action.payload;
+      const newCartItems =
+        selectedProduct.quantity > 0
+          ? state.cart.map((item) =>
+              item.id === selectedProduct.id ? selectedProduct : item
+            )
+          : state.cart.filter((item) => item.id !== selectedProduct.id);
+      Cookies.set("cart", JSON.stringify(newCartItems));
+      return {
+        ...state,
+        cart: newCartItems,
+      };
+    case "DELETE_ALL_CART":
+      Cookies.remove("cart");
+      return {
+        ...state,
+        cart: [],
       };
     default:
       return state;

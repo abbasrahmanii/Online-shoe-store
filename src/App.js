@@ -4,10 +4,12 @@ import { AnimatePresence } from "framer-motion";
 import { StoreProvider } from "./context/Store";
 import { GlobalStyles } from "./util/GlobalStyles";
 
-import City from "./components/City";
-import Form from "./components/Form";
-import Home from "./components/Home";
-import Sign from "./components/Sign";
+import City from "./pages/City";
+import Form from "./pages/Form";
+import Home from "./pages/Home";
+import Sign from "./pages/Sign";
+import Shop from "./pages/Shop";
+import Cart from "./pages/Cart";
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
           <Routes>
             <Route path="" element={<Home />} />
             <Route path=":id" element={<City />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="cart" element={<Cart />} />
             <Route path="form" element={<Form />} />
             <Route path="form/sign" element={<Sign />} />
           </Routes>

@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Store } from "../context/Store";
-import Nav from "./Nav";
-import Menu from "./Menu";
+import Nav from "../components/Nav";
+import Menu from "../components/Menu";
 
-import { pageAnim, imageAnim, descAnim } from "./animation";
+import { pageAnim, imageAnim, descAnim } from "../components/animation";
 
 const Home = () => {
   const { state } = useContext(Store);
@@ -63,19 +63,18 @@ const HomeStyles = styled(motion.div)`
 `;
 const City = styled.div`
   width: 100%;
-  height: 100%;
-  min-height: 20rem;
   display: flex;
+  /* align-items: stretch; */
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   padding: 1rem 2rem;
   margin: 2rem 0;
 `;
 
 const Image = styled(motion.div)`
   flex: 1;
-  min-width: 35rem;
-  height: auto;
+  /* min-width: 35rem; */
+  flex-basis: 25rem;
+  /* height: 100%; */
   z-index: 50;
   img {
     width: 100%;
@@ -86,8 +85,7 @@ const Image = styled(motion.div)`
 
 const Desc = styled(motion.div)`
   flex: 1;
-  width: 35rem;
-  min-height: auto;
+  flex-basis: 25rem;
   margin-left: 3rem;
   h1 {
     font-size: 3rem;
@@ -109,6 +107,8 @@ const Desc = styled(motion.div)`
     border: 1px solid #fff;
     padding: 0.5rem 1.3rem;
     transition: all 0.4s ease-out;
+    display: inline;
+    width: max-content;
     &:hover {
       letter-spacing: 0.15rem;
       padding: 0.5rem 0.6rem;
@@ -119,7 +119,8 @@ const Desc = styled(motion.div)`
 
 const Hide = styled.div`
   overflow: hidden;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default Home;

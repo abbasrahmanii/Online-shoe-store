@@ -3,9 +3,9 @@ import { Store } from "../context/Store";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { pageAnim } from "./animation";
-import Nav from "./Nav";
-import Menu from "./Menu";
+import { pageAnim } from "../components/animation";
+import Nav from "../components/Nav";
+import Menu from "../components/Menu";
 
 const City = () => {
   const { state } = useContext(Store);
@@ -30,7 +30,7 @@ const City = () => {
         <p className="mb-6 mx-10 text-center text-gray-200 ">
           {currentInfo.desc}
         </p>
-        <div className="flex gap-5 justify-between items-stretch">
+        <div className="flex gap-5 justify-between items-stretch flex-wrap p-6">
           <Images className="shadow-md shadow-indigo-500/50">
             <img src={currentInfo.images[0]} alt={currentInfo.images[0]} />
           </Images>
@@ -51,9 +51,7 @@ const Page = styled.div`
 `;
 
 const DetailStyles = styled(motion.div)`
-  /* min-height: 100vh; */
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,8 +65,11 @@ const DetailStyles = styled(motion.div)`
 `;
 
 const Images = styled.div`
-  max-width: 30%;
-  height: 30vh;
+  flex: 1;
+  flex-basis: 20rem;
+  /* max-width: 20rem; */
+  /* padding: 1rem 2rem; */
+  /* height: 30vh; */
   img {
     width: 100%;
     height: 100%;
