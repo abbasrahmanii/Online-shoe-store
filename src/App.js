@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import Sign from "./pages/Sign";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
+import Product from "./pages/Product";
+import Order from "./pages/Order";
 
 const App = () => {
   return (
@@ -21,7 +23,9 @@ const App = () => {
             <Route path="" element={<Home />} />
             <Route path=":id" element={<City />} />
             <Route path="shop" element={<Shop />} />
+            <Route path="shop/:id" element={<Product />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="order" element={<Order />} />
             <Route path="form" element={<Form />} />
             <Route path="form/sign" element={<Sign />} />
           </Routes>

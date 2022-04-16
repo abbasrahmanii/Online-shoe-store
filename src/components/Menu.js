@@ -7,7 +7,6 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 const Menu = () => {
   const { state, dispatch } = useContext(Store);
   const { cityData, menuStatus } = state;
-
   const { pathname } = useLocation();
 
   const menuStyle = {
@@ -27,18 +26,18 @@ const Menu = () => {
       style={menuStyle}
       onClickCapture={() => dispatch("MENU_TOGGLE")}
     >
-      <ul className="divide-y divide-cyan-400 gap-6 flex flex-col">
+      <ul className="divide-y divide-cyan-400 space-y-3 flex flex-col">
         <li
           className="text-slate-100 text-lg cursor-pointer hover:text-rose-500"
           onClick={() => dispatch({ type: "MENU_TOGGLE" })}
         >
           <FontAwesomeIcon icon={faCircleXmark} />
         </li>
-        <li>
+        <li className="pt-3">
           <Link
             to="/"
             onClick={() => dispatch({ type: "MENU_TOGGLE" })}
-            className="w-full"
+            className="w-full pt-3"
           >
             <h1
               className="text-slate-100 text-lg"
@@ -49,7 +48,7 @@ const Menu = () => {
           </Link>
         </li>
         {cityData.map((data) => (
-          <li key={data.id}>
+          <li key={data.id} className="pt-3">
             <Link
               to={data.url}
               onClick={() => dispatch({ type: "MENU_TOGGLE" })}
@@ -64,7 +63,7 @@ const Menu = () => {
             </Link>
           </li>
         ))}
-        <li>
+        <li className="pt-3">
           <Link
             to="/shop"
             onClick={() => dispatch({ type: "MENU_TOGGLE" })}
@@ -78,7 +77,7 @@ const Menu = () => {
             </h1>
           </Link>
         </li>
-        <li>
+        <li className="pt-3">
           <Link
             to="/cart"
             onClick={() => dispatch({ type: "MENU_TOGGLE" })}
@@ -92,7 +91,7 @@ const Menu = () => {
             </h1>
           </Link>
         </li>
-        <li>
+        <li className="pt-3">
           <Link
             to="/form"
             onClick={() => dispatch({ type: "MENU_TOGGLE" })}

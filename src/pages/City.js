@@ -30,7 +30,7 @@ const City = () => {
         <p className="mb-6 mx-10 text-center text-gray-200 ">
           {currentInfo.desc}
         </p>
-        <div className="flex gap-5 justify-between items-stretch flex-wrap p-6">
+        <div className="flex space-x-5 justify-between items-stretch flex-wrap p-6">
           <Images className="shadow-md shadow-indigo-500/50">
             <img src={currentInfo.images[0]} alt={currentInfo.images[0]} />
           </Images>

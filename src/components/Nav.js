@@ -9,7 +9,7 @@ import { navBorder } from "./animation";
 
 const Nav = () => {
   const { state, dispatch } = useContext(Store);
-  const { cityData } = state;
+  const { cityData, cart } = state;
   const location = useLocation();
 
   return (
@@ -25,7 +25,7 @@ const Nav = () => {
           Logo
         </h1>
       </Link>
-      <ul className="gap-6 hidden md:flex">
+      <ul className="space-x-6 hidden md:flex">
         <li>
           <Link to="/">
             <h1 className="text-white">Home</h1>
@@ -72,7 +72,14 @@ const Nav = () => {
         </li>
         <li>
           <Link to="/cart">
-            <h1 className="text-white">Cart</h1>
+            <h1 className="text-white relative">
+              Cart
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 text-sky-200 text-sm rounded-full bg-orange-600 w-4 h-4 flex items-center justify-center">
+                  {cart.length}
+                </span>
+              )}
+            </h1>
           </Link>
           {location.pathname === "/cart" && (
             <motion.div
