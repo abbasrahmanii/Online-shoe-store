@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../components/Card";
-import Menu from "../components/Menu";
-import Nav from "../components/Nav";
 import { Store } from "../context/Store";
+
+import Nav from "../components/Nav";
+import Menu from "../components/Menu";
+import Card from "../components/Card";
 
 const Shop = () => {
   const { state, dispatch } = useContext(Store);

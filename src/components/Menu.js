@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Store } from "../context/Store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+
+import { Store } from "../context/Store";
 
 const Menu = () => {
   const { state, dispatch } = useContext(Store);

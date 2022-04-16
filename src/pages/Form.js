@@ -1,7 +1,8 @@
 import React, { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Menu from "../components/Menu";
+
 import Nav from "../components/Nav";
+import Menu from "../components/Menu";
 
 const initialState = {
   firstName: {

@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import Menu from "../components/Menu";
-import Nav from "../components/Nav";
 import { Link, useNavigate } from "react-router-dom";
-import { Store } from "../context/Store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+
+import { Store } from "../context/Store";
+import Nav from "../components/Nav";
+import Menu from "../components/Menu";
 
 const Cart = () => {
   const { state, dispatch } = useContext(Store);

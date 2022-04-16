@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Menu from "../components/Menu";
-import Nav from "../components/Nav";
+
 import { Store } from "../context/Store";
+import Nav from "../components/Nav";
+import Menu from "../components/Menu";
 
 const Product = () => {
-  const { state, dispatch } = useContext(Store);
-  const { products, cart } = state;
+  const { state } = useContext(Store);
+  const { products } = state;
   const { id } = useParams();
   const paramsId = parseInt(id);
   const navigate = useNavigate();

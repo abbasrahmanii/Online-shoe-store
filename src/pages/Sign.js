@@ -1,6 +1,6 @@
 import React from "react";
-import queryString from "query-string";
 import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const Sign = () => {
   const location = useLocation();

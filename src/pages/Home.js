@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+
 import { Store } from "../context/Store";
+import { pageAnim, imageAnim, descAnim } from "../components/animation";
 import Nav from "../components/Nav";
 import Menu from "../components/Menu";
-
-import { pageAnim, imageAnim, descAnim } from "../components/animation";
 
 const Home = () => {
   const { state } = useContext(Store);

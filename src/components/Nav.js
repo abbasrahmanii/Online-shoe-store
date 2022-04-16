@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { Store } from "../context/Store";
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+
+import { Store } from "../context/Store";
 import { navBorder } from "./animation";
 
 const Nav = () => {

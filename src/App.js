@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+
 import { StoreProvider } from "./context/Store";
 import { GlobalStyles } from "./util/GlobalStyles";
 

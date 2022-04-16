@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { Store } from "../context/Store";
 import { useLocation } from "react-router-dom";
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
+
+import { Store } from "../context/Store";
 import { pageAnim } from "../components/animation";
 import Nav from "../components/Nav";
 import Menu from "../components/Menu";
