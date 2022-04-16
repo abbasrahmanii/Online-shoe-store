@@ -17,6 +17,13 @@ import asset52 from "../images/asset 52.jpeg";
 import asset53 from "../images/asset 53.jpeg";
 import asset54 from "../images/asset 54.jpeg";
 
+import shoe1 from "../images/42-426949_nike-running-shoes-png-nike-sport-shoes-png-removebg-preview.png";
+import shoe2 from "../images/158-1583031_transparent-kobe-png-nike-shoes-basketball-2019-png-removebg-preview.png";
+import shoe3 from "../images/244-2441957_nike-zoom-freak-1-hd-png-download-removebg-preview.png";
+import shoe4 from "../images/Red-Nike-shoes-premium-vector-PNG.png";
+import shoe5 from "../images/Nike-Half-boot-with-transparent-PNG.png";
+import shoe6 from "../images/Black-blue-nike-shoes-on-transparent-background-PNG.png";
+
 const DUMMY_DATA = () => {
   return {
     cities: [
@@ -102,6 +109,62 @@ const DUMMY_DATA = () => {
         numInStock: 10,
         delivery: 11.5,
         image: asset54,
+      },
+    ],
+    shoes: [
+      {
+        id: 1,
+        name: "shoe #1",
+        image: shoe1,
+        brand: "Nike",
+        sizes: ["7", "8", "9", "10"],
+        colors: ["yellow", "red", "blue"],
+        cover: "red",
+      },
+      {
+        id: 2,
+        name: "shoe #2",
+        image: shoe2,
+        brand: "Nike",
+        sizes: ["7", "8", "9", "10"],
+        colors: ["yellow", "red", "blue"],
+        cover: "purple",
+      },
+      {
+        id: 5,
+        name: "shoe #5",
+        image: shoe5,
+        brand: "Nike",
+        sizes: ["7", "8", "9", "10"],
+        colors: ["yellow", "red", "blue"],
+        cover: "green",
+      },
+      {
+        id: 4,
+        name: "shoe #4",
+        image: shoe4,
+        brand: "Nike",
+        sizes: ["7", "8", "9", "10"],
+        colors: ["yellow", "red", "blue"],
+        cover: "green",
+      },
+      {
+        id: 6,
+        name: "shoe #6",
+        image: shoe6,
+        brand: "Nike",
+        sizes: ["7", "8", "9", "10"],
+        colors: ["green", "red", "yellow"],
+        cover: "orange",
+      },
+      {
+        id: 3,
+        name: "shoe #3",
+        image: shoe3,
+        brand: "Nike",
+        sizes: ["7", "8", "9", "10"],
+        colors: ["cyan", "red", "sky"],
+        cover: "blue",
       },
     ],
   };

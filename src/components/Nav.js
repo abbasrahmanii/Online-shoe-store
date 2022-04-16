@@ -41,7 +41,7 @@ const Nav = () => {
             />
           )}
         </li>
-        {cityData.map((data) => (
+        {/* {cityData.map((data) => (
           <li key={data.id}>
             <Link to={data.url}>
               <h5 className="text-white">{data.name}</h5>
@@ -56,7 +56,7 @@ const Nav = () => {
               />
             )}
           </li>
-        ))}
+        ))} */}
         <li>
           <Link to="/shop">
             <h1 className="text-white">Shop</h1>

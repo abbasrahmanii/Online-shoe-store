@@ -16,7 +16,7 @@ import Order from "./pages/Order";
 
 const App = () => {
   return (
-    <div className="h-screen overflow-x-hidden">
+    <div className="h-screen overflow-x-hidden font-roboto">
       <StoreProvider>
         <GlobalStyles />
         <AnimatePresence exitBeforeEnter>

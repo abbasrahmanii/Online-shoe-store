@@ -4,11 +4,12 @@ import { Store } from "../context/Store";
 
 import Nav from "../components/Nav";
 import Menu from "../components/Menu";
-import Card from "../components/Card";
+// import Card from "../components/Card";
+import NewCard from "../components/NewCard";
 
 const Shop = () => {
   const { state, dispatch } = useContext(Store);
-  const { products, cart } = state;
+  const { products, shoes, cart } = state;
 
   const navigate = useNavigate();
 
@@ -34,25 +35,20 @@ const Shop = () => {
       <Menu />
       <div>
         <h1 className="text-center p-5 text-2xl text-white">Shop</h1>
-        <div className="flex flex-col items-center mb-6">
-          <div className="bg-rose-900 p-5 rounded-lg text-white shadow-lg shadow-rose-900/70">
-            <p>
-              Total Quantity: {cart && cart.reduce((a, c) => a + c.quantity, 0)}
-            </p>
-            <p>
-              Total Price: ${" "}
-              {cart
-                .reduce((a, c) => a + c.price.split(" ")[1] * c.quantity, 0)
-                .toFixed(2)}
-            </p>
-          </div>
-        </div>
+        <div className="flex flex-col items-center mb-6"></div>
         <div className="flex gap-10 justify-around flex-wrap mx-5 pb-10">
-          {products.map((product) => (
+          {/* {products.map((product) => (
             <Card
               product={product}
               onClick={() => addToCartHandler(product)}
               key={product.id}
+            />
+          ))} */}
+          {shoes.map((shoe) => (
+            <NewCard
+              shoe={shoe}
+              onClick={() => addToCartHandler(shoe)}
+              key={shoe.id}
             />
           ))}
         </div>

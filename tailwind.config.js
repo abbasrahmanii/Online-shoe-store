@@ -5,6 +5,9 @@ module.exports = {
       colors: {
         "dark-background": "#29212e",
       },
+      fontFamily: {
+        roboto: ["Roboto"],
+      },
     },
   },
   plugins: [],

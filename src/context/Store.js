@@ -10,7 +10,11 @@ const initialState = {
     : false,
   cityData: data().cities,
   products: data().products,
+  shoes: data().shoes,
   cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : [],
+  shoesCart: Cookies.get("shoesCart")
+    ? JSON.parse(Cookies.get("shoesCart"))
+    : [],
 };
 
 const reducer = (state, action) => {
