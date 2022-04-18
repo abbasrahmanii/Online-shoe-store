@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilterCircleXmark,
   faCheck,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
@@ -49,9 +50,12 @@ const Filter = () => {
     [colorSelected]
   );
 
-  const clearColorFilter = useCallback(() => {
-    setColorSelected([]);
-  }, []);
+  const clearFilter = useCallback(
+    (type) => {
+      type === "category" ? setCategorySelected([]) : setColorSelected([]);
+    },
+    [categorySelected, colorSelected]
+  );
 
   useEffect(() => {
     const filteredColor = shoes.filter(
@@ -91,56 +95,80 @@ const Filter = () => {
   }, [colorSelected, categorySelected, dispatch, shoes]);
 
   return (
-    <div className="fixed left-0 bg-cyan-400 flex flex-col rounded-xl  mx-4 my-4 p-4">
-      <h1>Filter</h1>
-      <h2>Category:</h2>
-      {allCategories.map((cat, index) => (
-        <div key={index}>
-          <input
-            type="checkbox"
-            name={cat}
-            id={cat}
-            className="bg-red-500 text-lg p-4 mr-2"
-            onClick={(e) => categoryHandler(e, cat)}
-            style={{ accentColor: "#066163" }}
-          />
-          <span>{cat.toUpperCase()}</span>
-        </div>
-      ))}
-      <h2 className="my-2">
-        Colors:{" "}
-        <span onClick={clearColorFilter}>
-          <FontAwesomeIcon
-            icon={faFilterCircleXmark}
-            size="sm"
-            color="#555"
-            className="cursor-pointer"
-          />
-        </span>
-      </h2>
-      <div className="gap-2 flex flex-wrap">
-        {allColors.map((color, index) => (
-          <span
-            key={index}
-            className="w-5 h-5 inline-block rounded-full cursor-pointer text-center"
-            style={{
-              backgroundColor: color,
-              opacity: colorSelected.find((c) => c === color) ? 0.7 : 1,
-            }}
-            color={color}
-            onClick={() => colorHandler(color)}
-          >
-            {colorSelected.find((c) => c === color) ? (
-              color === "black" ? (
-                <FontAwesomeIcon icon={faCheck} color="#FFF" />
-              ) : (
-                <FontAwesomeIcon icon={faCheck} />
-              )
-            ) : (
-              ""
-            )}
-          </span>
+    <div className="fixed right-0">
+      <div className=" bg-cyan-400 flex flex-col rounded-xl mx-4 my-4 p-4">
+        <h1>Filter</h1>
+        <h2>دسته بندی :</h2>
+        {allCategories.map((cat, index) => (
+          <div key={index}>
+            <input
+              type="checkbox"
+              name={cat}
+              id={cat}
+              checked={categorySelected.find((str) => str === cat)}
+              className="bg-red-500 text-lg p-4 ml-2"
+              onClick={(e) => categoryHandler(e, cat)}
+              style={{ accentColor: "#066163" }}
+            />
+            <span>{cat.toUpperCase()}</span>
+          </div>
         ))}
+        <h2 className="my-2">رنگ :</h2>
+        <div className="gap-2 flex flex-wrap">
+          {allColors.map((color, index) => (
+            <span
+              key={index}
+              className="w-5 h-5 inline-block rounded-full cursor-pointer text-center"
+              style={{
+                backgroundColor: color,
+                opacity: colorSelected.find((c) => c === color) ? 0.7 : 1,
+              }}
+              color={color}
+              onClick={() => colorHandler(color)}
+            >
+              {colorSelected.find((c) => c === color) &&
+                (color === "black" ? (
+                  <FontAwesomeIcon icon={faCheck} color="#FFF" />
+                ) : (
+                  <FontAwesomeIcon icon={faCheck} />
+                ))}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-col mt-3 items-start">
+          {colorSelected.length > 0 || categorySelected.length > 0 ? (
+            <p className="text-sm">فیلترهای فعال :</p>
+          ) : (
+            ""
+          )}
+          <div className="flex space-s-2 mt-1">
+            {colorSelected.length > 0 && (
+              <span className="py-1 px-2 border-2 border-slate-700 text-sm">
+                color{" "}
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  color="#555"
+                  className="cursor-pointer"
+                  onClick={() => clearFilter("color")}
+                />
+              </span>
+            )}
+            {categorySelected.length > 0 && (
+              <span className="py-1 px-2 border-2 border-slate-700 text-sm">
+                category{" "}
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  color="#555"
+                  className="cursor-pointer"
+                  onClick={() => clearFilter("category")}
+                />
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="bg-slate-100 flex flex-col rounded-xl mx-4 my-4 p-4">
+        <h1>مرتب سازی :</h1>
       </div>
     </div>
   );

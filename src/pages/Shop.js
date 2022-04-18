@@ -37,23 +37,21 @@ const Shop = () => {
         <div className="flex flex-col items-center mb-6 w-1/5">
           <Filter />
         </div>
-        {/* <div className="flex gap-10 justify-around flex-wrap mx-5 pb-10"> */}
-        <div className="grid grid-cols-3 p-4 gap-6 place-items-center w-4/5">
-          {/* {products.map((product) => (
-            <Card
-              product={product}
-              onClick={() => addToCartHandler(product)}
-              key={product.id}
-            />
-          ))} */}
-          {filteredShoes.map((shoe) => (
-            <NewCard
-              shoe={shoe}
-              onClick={() => addToCartHandler(shoe)}
-              key={shoe.id}
-            />
-          ))}
-        </div>
+        {filteredShoes.length > 0 ? (
+          <div className="grid grid-cols-3 p-4 gap-6 place-items-center w-4/5">
+            {filteredShoes.map((shoe) => (
+              <NewCard
+                shoe={shoe}
+                onClick={() => addToCartHandler(shoe)}
+                key={shoe.id}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-64 w-full">
+            <h1 className="text-white text-3xl text-center">محصولی یافت نشد</h1>
+          </div>
+        )}
       </div>
     </div>
   );

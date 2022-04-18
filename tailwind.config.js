@@ -10,5 +10,13 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  // plugins: [],
+  // plugins: [require("tailwindcss-dir")()],
+  plugins: [require("tailwindcss-rtl")],
+  // variants: {
+  //   float: ["responsive", "direction"],
+  //   margin: ["responsive", "direction"],
+  //   padding: ["responsive", "direction"],
+  //   space: ["responsive", "direction"],
+  // },
 };

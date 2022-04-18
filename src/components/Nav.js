@@ -26,7 +26,7 @@ const Nav = () => {
           Logo
         </h1>
       </Link>
-      <ul className="space-x-6 hidden md:flex">
+      <ul className="space-s-6 hidden md:flex">
         <li>
           <Link to="/">
             <h1 className="text-white">Home</h1>
