@@ -11,6 +11,9 @@ const initialState = {
   cityData: data().cities,
   products: data().products,
   shoes: data().shoes,
+  filteredShoes: Cookies.get("filteredShoes")
+    ? JSON.parse(Cookies.get("filteredShoes"))
+    : data().shoes,
   cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : [],
   shoesCart: Cookies.get("shoesCart")
     ? JSON.parse(Cookies.get("shoesCart"))
@@ -57,6 +60,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: [],
+      };
+    case "COLOR_FILTER":
+      // const filteredShoes = colorSelected.length === 0 ? state.shoes : filtered;
+      return {
+        ...state,
+        filteredShoes: action.payload,
       };
     default:
       return state;

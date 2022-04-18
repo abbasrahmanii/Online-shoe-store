@@ -10,7 +10,7 @@ import { navBorder } from "./animation";
 
 const Nav = () => {
   const { state, dispatch } = useContext(Store);
-  const { cityData, cart } = state;
+  const { cart } = state;
   const location = useLocation();
 
   return (
@@ -94,7 +94,7 @@ const Nav = () => {
         </li>
         <li>
           <Link to="/form">
-            <h1 className="text-white">Form</h1>
+            <h1 className="text-white">Sign in</h1>
           </Link>
           {location.pathname === "/form" && (
             <motion.div

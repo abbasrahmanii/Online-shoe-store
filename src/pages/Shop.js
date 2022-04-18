@@ -6,11 +6,11 @@ import Nav from "../components/Nav";
 import Menu from "../components/Menu";
 // import Card from "../components/Card";
 import NewCard from "../components/NewCard";
+import Filter from "../components/Filter";
 
 const Shop = () => {
   const { state, dispatch } = useContext(Store);
-  const { products, shoes, cart } = state;
-
+  const { products, filteredShoes, cart } = state;
   const navigate = useNavigate();
 
   const addToCartHandler = (product) => {
@@ -33,10 +33,12 @@ const Shop = () => {
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-indigo-900">
       <Nav />
       <Menu />
-      <div>
-        <h1 className="text-center p-5 text-2xl text-white">Shop</h1>
-        <div className="flex flex-col items-center mb-6"></div>
-        <div className="flex gap-10 justify-around flex-wrap mx-5 pb-10">
+      <div className="w-full flex">
+        <div className="flex flex-col items-center mb-6 w-1/5">
+          <Filter />
+        </div>
+        {/* <div className="flex gap-10 justify-around flex-wrap mx-5 pb-10"> */}
+        <div className="grid grid-cols-3 p-4 gap-6 place-items-center w-4/5">
           {/* {products.map((product) => (
             <Card
               product={product}
@@ -44,7 +46,7 @@ const Shop = () => {
               key={product.id}
             />
           ))} */}
-          {shoes.map((shoe) => (
+          {filteredShoes.map((shoe) => (
             <NewCard
               shoe={shoe}
               onClick={() => addToCartHandler(shoe)}

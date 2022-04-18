@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const NewCard = (props) => {
   const { shoe } = props;
-  const brand = shoe.brand;
   return (
     <>
       {/* <Card className="card relative bg-sky-500 rounded-2xl overflow-hidden before:bg-red-600"> */}
@@ -36,7 +35,7 @@ const NewCard = (props) => {
           <div className="color">
             <h3>Color :</h3>
             {shoe.colors.map((color, index) => (
-              <span key={index} className={color}></span>
+              <span key={index} style={{ backgroundColor: color }}></span>
             ))}
           </div>
           <Link to={`/shop/shoes/${shoe.id}`}>Buy Now</Link>
@@ -48,7 +47,8 @@ const NewCard = (props) => {
 
 const Card = styled.div`
   width: 20rem;
-  height: 450px;
+  /* height: 450px; */
+  height: 400px;
   &::before {
     content: "";
     position: absolute;
@@ -56,12 +56,14 @@ const Card = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    clip-path: circle(150px at 80% 20%);
+    /* clip-path: circle(150px at 80% 20%); */
+    clip-path: circle(120px at 80% 20%);
     /* background-color: #0a5cf3; */
     transition: 0.5s ease-in-out;
   }
   &:hover::before {
-    clip-path: circle(300px at 80% -20%);
+    /* clip-path: circle(300px at 80% -20%); */
+    clip-path: circle(280px at 80% -20%);
   }
   &::after {
     content: "Nike";
@@ -75,7 +77,8 @@ const Card = styled.div`
   }
   .imgBx {
     position: absolute;
-    top: 50%;
+    /* top: 50%; */
+    top: 40%;
     transform: translateY(-50%);
     z-index: 2;
     width: 100%;
@@ -92,10 +95,12 @@ const Card = styled.div`
   &:hover {
     .imgBx {
       top: 0%;
+      /* top: -10%; */
       transform: translateY(0%) rotate(-25deg);
     }
     .contentBx {
-      height: 210px;
+      /* height: 210px; */
+      height: 175px;
       .size {
         opacity: 1;
         visibility: visible;
@@ -173,13 +178,13 @@ const Card = styled.div`
         margin: 0 5px;
         cursor: pointer;
         &:nth-child(2) {
-          background: #98ee0f;
+          /* background: #98ee0f; */
         }
         &:nth-child(3) {
-          background: #fc2904;
+          /* background: #fc2904; */
         }
         &:nth-child(4) {
-          background: #ffe600;
+          /* background: #ffe600; */
         }
       }
     }
