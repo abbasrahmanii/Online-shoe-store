@@ -62,10 +62,22 @@ const reducer = (state, action) => {
         cart: [],
       };
     case "COLOR_FILTER":
-      // const filteredShoes = colorSelected.length === 0 ? state.shoes : filtered;
       return {
         ...state,
         filteredShoes: action.payload,
+      };
+    case "SORT":
+      const filtered = state.filteredShoes;
+      if (action.payload === "") {
+        filtered.sort((a, b) => a.id - b.id);
+      } else if (action.payload === "top") {
+        filtered.sort((a, b) => b.price.split(" ")[1] - a.price.split(" ")[1]);
+      } else if (action.payload === "bottom") {
+        filtered.sort((a, b) => a.price.split(" ")[1] - b.price.split(" ")[1]);
+      }
+      return {
+        ...state,
+        filteredShoes: filtered,
       };
     default:
       return state;

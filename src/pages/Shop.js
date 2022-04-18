@@ -29,11 +29,13 @@ const Shop = () => {
     navigate("/cart");
   };
 
+  console.log(filteredShoes);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-indigo-900">
       <Nav />
       <Menu />
-      <div className="w-full flex">
+      <div className="w-full flex space-s-8">
         <div className="flex flex-col items-center mb-6 w-1/5">
           <Filter />
         </div>

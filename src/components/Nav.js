@@ -21,15 +21,10 @@ const Nav = () => {
         className="cursor-pointer md:hidden"
         onClick={() => dispatch({ type: "MENU_TOGGLE" })}
       />
-      <Link to="/">
-        <h1 className="cursor-pointer block text-white md:text-indigo-900 text-md font-semibold">
-          Logo
-        </h1>
-      </Link>
       <ul className="space-s-6 hidden md:flex">
         <li>
           <Link to="/">
-            <h1 className="text-white">Home</h1>
+            <h1 className="text-white">خانه</h1>
           </Link>
           {location.pathname === "/" && (
             <motion.div
@@ -48,18 +43,18 @@ const Nav = () => {
             </Link>
             {location.pathname === data.url && (
               <motion.div
-                variants={navBorder}
-                initial="hidden"
-                animate="show"
+              variants={navBorder}
+              initial="hidden"
+              animate="show"
                 exit="exit"
                 className="text-white border-b-2 border-b-rose-500"
-              />
+                />
             )}
-          </li>
-        ))} */}
+            </li>
+          ))} */}
         <li>
           <Link to="/shop">
-            <h1 className="text-white">Shop</h1>
+            <h1 className="text-white">فروشگاه</h1>
           </Link>
           {location.pathname === "/shop" && (
             <motion.div
@@ -74,7 +69,7 @@ const Nav = () => {
         <li>
           <Link to="/cart">
             <h1 className="text-white relative">
-              Cart
+              سبد خرید
               {cart.length > 0 && (
                 <span className="absolute -top-2 -right-2 text-sky-200 text-sm rounded-full bg-orange-600 w-4 h-4 flex items-center justify-center">
                   {cart.length}
@@ -94,7 +89,7 @@ const Nav = () => {
         </li>
         <li>
           <Link to="/form">
-            <h1 className="text-white">Sign in</h1>
+            <h1 className="text-white">ورود</h1>
           </Link>
           {location.pathname === "/form" && (
             <motion.div
@@ -107,6 +102,11 @@ const Nav = () => {
           )}
         </li>
       </ul>
+      <Link to="/">
+        <h1 className="cursor-pointer block text-white md:text-indigo-900 text-md font-semibold">
+          لوگو
+        </h1>
+      </Link>
     </NavStyles>
   );
 };

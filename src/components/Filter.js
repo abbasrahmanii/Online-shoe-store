@@ -1,10 +1,6 @@
 import React, { useContext, useState, useCallback, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFilterCircleXmark,
-  faCheck,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
 
@@ -23,7 +19,7 @@ const Filter = () => {
   }
 
   const allColors = [...new Set(colors)];
-  const allCategories = ["lifeStyle", "football", "party"];
+  const allCategories = ["روزمره", "ورزشی", "رسمی"];
 
   const categoryHandler = useCallback(
     (e, InputName) => {
@@ -50,12 +46,13 @@ const Filter = () => {
     [colorSelected]
   );
 
-  const clearFilter = useCallback(
-    (type) => {
-      type === "category" ? setCategorySelected([]) : setColorSelected([]);
-    },
-    [categorySelected, colorSelected]
-  );
+  const clearFilter = (type) => {
+    type === "category" ? setCategorySelected([]) : setColorSelected([]);
+  };
+
+  const sortHandler = (e) => {
+    dispatch({ type: "SORT", payload: e.target.value });
+  };
 
   useEffect(() => {
     const filteredColor = shoes.filter(
@@ -97,8 +94,7 @@ const Filter = () => {
   return (
     <div className="fixed right-0">
       <div className=" bg-cyan-400 flex flex-col rounded-xl mx-4 my-4 p-4">
-        <h1>Filter</h1>
-        <h2>دسته بندی :</h2>
+        <h2 className="mb-1">دسته بندی :</h2>
         {allCategories.map((cat, index) => (
           <div key={index}>
             <input
@@ -106,14 +102,14 @@ const Filter = () => {
               name={cat}
               id={cat}
               checked={categorySelected.find((str) => str === cat)}
-              className="bg-red-500 text-lg p-4 ml-2"
+              className="ml-2"
               onClick={(e) => categoryHandler(e, cat)}
               style={{ accentColor: "#066163" }}
             />
-            <span>{cat.toUpperCase()}</span>
+            <span>{cat}</span>
           </div>
         ))}
-        <h2 className="my-2">رنگ :</h2>
+        <h2 className="mb-1 mt-3">رنگ :</h2>
         <div className="gap-2 flex flex-wrap">
           {allColors.map((color, index) => (
             <span
@@ -144,7 +140,7 @@ const Filter = () => {
           <div className="flex space-s-2 mt-1">
             {colorSelected.length > 0 && (
               <span className="py-1 px-2 border-2 border-slate-700 text-sm">
-                color{" "}
+                رنگ ({colorSelected.length}){" "}
                 <FontAwesomeIcon
                   icon={faXmark}
                   color="#555"
@@ -155,7 +151,7 @@ const Filter = () => {
             )}
             {categorySelected.length > 0 && (
               <span className="py-1 px-2 border-2 border-slate-700 text-sm">
-                category{" "}
+                دسته بندی ({categorySelected.length}){" "}
                 <FontAwesomeIcon
                   icon={faXmark}
                   color="#555"
@@ -167,8 +163,24 @@ const Filter = () => {
           </div>
         </div>
       </div>
-      <div className="bg-slate-100 flex flex-col rounded-xl mx-4 my-4 p-4">
-        <h1>مرتب سازی :</h1>
+      <div className="bg-lime-600 flex flex-col rounded-xl mx-4 my-4 p-4">
+        <h1 className="mb-1">مرتب سازی :</h1>
+        <select
+          className="appearance-none rounded-md bg-slate-50 p-1 outline-none"
+          name="sort"
+          id="sort"
+          onChange={(e) => sortHandler(e)}
+        >
+          <option value="" className="text-lime-900">
+            ترتیب پیشفرض
+          </option>
+          <option value="top" className="text-lime-900">
+            گران‌ترین
+          </option>
+          <option value="bottom" className="text-lime-900">
+            ارزان‌ترین
+          </option>
+        </select>
       </div>
     </div>
   );

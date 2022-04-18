@@ -16,12 +16,12 @@ const NewCard = (props) => {
         className={`card relative bg-sky-500 rounded-2xl overflow-hidden before:bg-${shoe.cover}-600`}
       >
         <div className="imgBx">
-          <img className="img" src={shoe.image} alt="img" />
+          <img className="img" src={shoe.image} alt={shoe.name} />
         </div>
         <div className="contentBx">
           <h2>{shoe.name}</h2>
           <div className="size">
-            <h3>Size :</h3>
+            <h3>اندازه :</h3>
             {shoe.sizes.map((size, index) => (
               <span
                 key={index}
@@ -33,12 +33,12 @@ const NewCard = (props) => {
             ))}
           </div>
           <div className="color">
-            <h3>Color :</h3>
+            <h3>رنگ بندی :</h3>
             {shoe.colors.map((color, index) => (
               <span key={index} style={{ backgroundColor: color }}></span>
             ))}
           </div>
-          <Link to={`/shop/shoes/${shoe.id}`}>Buy Now</Link>
+          <Link to={`/shop/shoes/${shoe.id}`}>خرید</Link>
         </div>
       </Card>
     </>

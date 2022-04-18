@@ -40,15 +40,15 @@ const Cart = () => {
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-slate-700">
       <Nav />
       <Menu />
-      <h1 className="text-white text-center m-4 text-2xl">Cart Page</h1>
+      <h1 className="text-white text-center m-4 text-2xl">صفحه سبد خرید</h1>
       {cart.length < 1 ? (
         <>
-          <h3 className="text-white text-center m-2">Cart is Empty!</h3>
+          <h3 className="text-white text-center m-2">سبد خالی خالی است!</h3>
           <h5
-            className="text-cyan-300 hover:text-blue-300 text-center text-sm m-2"
+            className="text-cyan-300 hover:text-blue-300 text-center text-sm m-2 cursor-pointer"
             onClick={() => navigate("/shop")}
           >
-            Go to Shop!
+            به فروشگاه بروید!
           </h5>
         </>
       ) : (

@@ -13,7 +13,7 @@ const Card = ({ product, onClick }) => {
           className="block w-full bg-rose-300 p-1 mt-3 rounded-md text-sm shadow-md hover:shadow-rose-200/40 duration-300 transition-all"
           onClick={onClick}
         >
-          Add to cart
+          افزودن به سبد خرید
         </button>
       </div>
     </div>
