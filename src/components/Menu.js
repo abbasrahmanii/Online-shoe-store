@@ -44,11 +44,11 @@ const Menu = () => {
               className="text-slate-100 text-lg"
               style={pathname === "/" ? activeMenuStyle : null}
             >
-              Home
+              خانه
             </h1>
           </Link>
         </li>
-        {cityData.map((data) => (
+        {/* {cityData.map((data) => (
           <li key={data.id} className="pt-3">
             <Link
               to={data.url}
@@ -63,7 +63,7 @@ const Menu = () => {
               </h1>
             </Link>
           </li>
-        ))}
+        ))} */}
         <li className="pt-3">
           <Link
             to="/shop"
@@ -74,7 +74,7 @@ const Menu = () => {
               className="text-slate-100"
               style={pathname === "/shop" ? activeMenuStyle : null}
             >
-              Shop
+              فروشگاه
             </h1>
           </Link>
         </li>
@@ -88,7 +88,7 @@ const Menu = () => {
               className="text-slate-100"
               style={pathname === "/cart" ? activeMenuStyle : null}
             >
-              Cart
+              سبد خرید
             </h1>
           </Link>
         </li>
@@ -102,7 +102,7 @@ const Menu = () => {
               className="text-slate-100"
               style={pathname === "/form" ? activeMenuStyle : null}
             >
-              Form
+              ورود
             </h1>
           </Link>
         </li>

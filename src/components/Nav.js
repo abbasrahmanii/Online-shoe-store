@@ -7,6 +7,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
 import { navBorder } from "./animation";
+import logo from "../images/nike_PNG18.png";
+import logo2 from "../images/6-2-nike-logo-free-png-image.png";
 
 const Nav = () => {
   const { state, dispatch } = useContext(Store);
@@ -103,9 +105,10 @@ const Nav = () => {
         </li>
       </ul>
       <Link to="/">
-        <h1 className="cursor-pointer block text-white md:text-indigo-900 text-md font-semibold">
+        {/* <h1 className="cursor-pointer block text-white md:text-indigo-900 text-md font-semibold">
           لوگو
-        </h1>
+        </h1> */}
+        <img src={logo2} alt="logo" className="w-14 object-cover" />
       </Link>
     </NavStyles>
   );

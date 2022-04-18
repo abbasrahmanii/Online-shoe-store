@@ -150,6 +150,7 @@ const Card = styled.div`
         margin-right: 10px;
       }
       span {
+        cursor: default;
         width: 26px;
         height: 26px;
         text-align: center;
@@ -161,12 +162,11 @@ const Card = styled.div`
         margin: 0 5px;
         transition: 0.5s;
         border-radius: 5px;
-        cursor: pointer;
         transform: scale(1);
         transition: 0.2s ease-in;
         &:hover {
-          background: #bb7c07;
-          transform: scale(1.2);
+          /* background: #bb7c07; */
+          /* transform: scale(1.2); */
         }
       }
     }
@@ -176,7 +176,7 @@ const Card = styled.div`
         height: 20px;
         border-radius: 50%;
         margin: 0 5px;
-        cursor: pointer;
+        cursor: auto;
         &:nth-child(2) {
           /* background: #98ee0f; */
         }

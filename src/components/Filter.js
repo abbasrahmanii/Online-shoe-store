@@ -102,9 +102,8 @@ const Filter = () => {
               name={cat}
               id={cat}
               checked={categorySelected.find((str) => str === cat)}
-              className="ml-2"
+              className="ml-2 accent-emerald-700 hover:accent-emerald-800"
               onClick={(e) => categoryHandler(e, cat)}
-              style={{ accentColor: "#066163" }}
             />
             <span>{cat}</span>
           </div>
