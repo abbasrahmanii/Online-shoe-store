@@ -29,18 +29,16 @@ const Shop = () => {
     navigate("/cart");
   };
 
-  console.log(filteredShoes);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-indigo-900">
       <Nav />
       <Menu />
-      <div className="w-full flex space-s-8">
-        <div className="flex flex-col items-center mb-6 w-1/5">
-          <Filter />
-        </div>
+      {/* <div className="w-full flex space-s-8 flex-wrap"> */}
+      <div className="grid grid-col-1 md:grid-cols-4">
+        {/* <div className="flex flex-col items-center mb-6 w-full md:w-1/5"> */}
+        <Filter />
         {filteredShoes.length > 0 ? (
-          <div className="grid grid-cols-3 p-4 gap-6 place-items-center w-4/5">
+          <div className="md:col-end-5 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center">
             {filteredShoes.map((shoe) => (
               <NewCard
                 shoe={shoe}

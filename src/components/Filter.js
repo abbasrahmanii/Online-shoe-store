@@ -92,7 +92,7 @@ const Filter = () => {
   }, [colorSelected, categorySelected, dispatch, shoes]);
 
   return (
-    <div className="fixed right-0">
+    <div className="flex flex-col md:fixed right-0 md:w-1/4">
       <div className=" bg-cyan-400 flex flex-col rounded-xl mx-4 my-4 p-4">
         <h2 className="mb-1">دسته بندی :</h2>
         {allCategories.map((cat, index) => (
@@ -171,7 +171,7 @@ const Filter = () => {
           onChange={(e) => sortHandler(e)}
         >
           <option value="" className="text-lime-900">
-            ترتیب پیشفرض
+            پیشفرض
           </option>
           <option value="top" className="text-lime-900">
             گران‌ترین

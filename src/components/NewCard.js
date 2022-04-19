@@ -38,6 +38,10 @@ const NewCard = (props) => {
               <span key={index} style={{ backgroundColor: color }}></span>
             ))}
           </div>
+          <div className="price">
+            <h3>قیمت : </h3>
+            <p>{shoe.price}</p>
+          </div>
           <Link to={`/shop/shoes/${shoe.id}`}>خرید</Link>
         </div>
       </Card>
@@ -46,7 +50,8 @@ const NewCard = (props) => {
 };
 
 const Card = styled.div`
-  width: 20rem;
+  /* width: 20rem; */
+  width: 18rem;
   /* height: 450px; */
   height: 400px;
   &::before {
@@ -111,10 +116,15 @@ const Card = styled.div`
         visibility: visible;
         transition-delay: 0.6s;
       }
+      .price {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0.7s;
+      }
       a {
         opacity: 1;
         transform: translateY(0px);
-        transition-delay: 0.75s;
+        transition-delay: 0.8s;
       }
     }
   }
@@ -133,41 +143,38 @@ const Card = styled.div`
       color: #fff;
     }
     .size,
-    .color {
+    .color,
+    .price {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 20px;
+      padding: 6px 20px;
       transition: 0.5s;
       opacity: 0;
       visibility: hidden;
       h3 {
         color: #fff;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 2px;
-        margin-right: 10px;
+        /* margin-right: 10px; */
       }
-      span {
+
+      span,
+      p {
         cursor: default;
         width: 26px;
         height: 26px;
         text-align: center;
         line-height: 26px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         display: inline-block;
         color: #fff;
-        background: #ffa600;
+        /* background: #ffa600; */
         margin: 0 5px;
         transition: 0.5s;
         border-radius: 5px;
-        transform: scale(1);
-        transition: 0.2s ease-in;
-        &:hover {
-          /* background: #bb7c07; */
-          /* transform: scale(1.2); */
-        }
       }
     }
     .color {
@@ -177,23 +184,19 @@ const Card = styled.div`
         border-radius: 50%;
         margin: 0 5px;
         cursor: auto;
-        &:nth-child(2) {
-          /* background: #98ee0f; */
-        }
-        &:nth-child(3) {
-          /* background: #fc2904; */
-        }
-        &:nth-child(4) {
-          /* background: #ffe600; */
-        }
+      }
+    }
+    .price {
+      p {
+        width: max-content;
       }
     }
     a {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 4px 20px;
       background: #fff;
       border-radius: 4px;
-      margin-top: 10px;
+      margin-top: 5px;
       text-decoration: none;
       font-weight: 600;
       color: #111;
