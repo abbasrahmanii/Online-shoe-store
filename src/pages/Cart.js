@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
 import Nav from "../components/Nav";
@@ -9,29 +9,29 @@ import Menu from "../components/Menu";
 
 const Cart = () => {
   const { state, dispatch } = useContext(Store);
-  const { cart, products } = state;
+  const { cart } = state;
 
   const navigate = useNavigate();
 
-  const addToCartHandler = (product) => {
-    const isInStock = products.find((p) => p.id === product.id);
-    const existItem = cart.find((p) => p.id === product.id);
-    if (
-      isInStock.numInStock === 0 ||
-      existItem?.quantity === isInStock.numInStock
-    ) {
-      alert("با عرض پوزش\nموجودی انبار کافی نیست!");
-      return;
-    }
-    const quantity = existItem ? existItem.quantity + 1 : 1;
-    const date = new Date().toLocaleString();
-    dispatch({ type: "ADD_TO_CART", payload: { ...product, quantity, date } });
-  };
+  // const addToCartHandler = (product) => {
+  //   const isInStock = products.find((p) => p.id === product.id);
+  //   const existItem = cart.find((p) => p.id === product.id);
+  //   if (
+  //     isInStock.numInStock === 0 ||
+  //     existItem?.quantity === isInStock.numInStock
+  //   ) {
+  //     alert("با عرض پوزش\nموجودی انبار کافی نیست!");
+  //     return;
+  //   }
+  //   const quantity = existItem ? existItem.quantity + 1 : 1;
+  //   const date = new Date().toLocaleString();
+  //   dispatch({ type: "ADD_TO_CART", payload: { ...product, quantity, date } });
+  // };
 
-  const deleteCartHandler = (product) => {
-    const quantity = product.quantity - 1;
-    dispatch({ type: "DELETE_CART", payload: { ...product, quantity } });
-  };
+  // const deleteCartHandler = (product) => {
+  //   const quantity = product.quantity - 1;
+  //   dispatch({ type: "DELETE_CART", payload: { ...product, quantity } });
+  // };
   const deleteAllHandler = (product) => {
     dispatch({ type: "DELETE_CART", payload: { ...product, quantity: 0 } });
   };
@@ -40,7 +40,7 @@ const Cart = () => {
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-slate-700">
       <Nav />
       <Menu />
-      <h1 className="text-white text-center m-4 text-2xl">صفحه سبد خرید</h1>
+      <h1 className="text-white text-center m-4 text-2xl">سبد خرید</h1>
       {cart.length < 1 ? (
         <>
           <h3 className="text-white text-center m-2">سبد خالی خالی است!</h3>
@@ -52,13 +52,13 @@ const Cart = () => {
           </h5>
         </>
       ) : (
-        <div className="flex items-start w-full justify-center space-x-8">
+        <div className="flex items-start w-full justify-center space-s-8">
           <div className="bg-rose-900 p-5 rounded-lg text-white shadow-lg shadow-rose-900/70 ">
             <p>
-              Total Quantity: {cart && cart.reduce((a, c) => a + c.quantity, 0)}
+              تعداد محصولات : {cart && cart.reduce((a, c) => a + c.quantity, 0)}
             </p>
             <p>
-              Total Price: ${" "}
+              مجموع قیمت : ${" "}
               {cart
                 .reduce((a, c) => a + c.price.split(" ")[1] * c.quantity, 0)
                 .toFixed(2)}
@@ -67,20 +67,24 @@ const Cart = () => {
               className="mt-4 text-sm w-full bg-slate-100 rounded-md py-1 text-rose-900 hover:shadow-xl"
               onClick={() => navigate("/order")}
             >
-              Continue Ordering
+              ادامه سفارش
             </button>
           </div>
 
           <table className="w-3/4 text-center table-auto">
             <thead className=" bg-gradient-to-r from-slate-400 to-slate-300">
               <tr>
-                <th className="px-6 py-2 text-xs text-gray-600">ID</th>
-                <th className="px-6 py-2 text-xs text-gray-600">Image</th>
-                <th className="px-6 py-2 text-xs text-gray-600">Name</th>
-                <th className="px-6 py-2 text-xs text-gray-600">Quantity</th>
-                <th className="px-6 py-2 text-xs text-gray-600">Total Price</th>
-                <th className="px-6 py-2 text-xs text-gray-600">Created at</th>
-                <th className="px-6 py-2 text-xs text-gray-600">Delete</th>
+                <th className="px-6 py-2 text-xs text-gray-600">شناسه</th>
+                <th className="px-6 py-2 text-xs text-gray-600">تصویر</th>
+                <th className="px-6 py-2 text-xs text-gray-600">نام</th>
+                <th className="px-6 py-2 text-xs text-gray-600">تعداد</th>
+                <th className="px-6 py-2 text-xs text-gray-600">اندازه</th>
+                <th className="px-6 py-2 text-xs text-gray-600">رنگ</th>
+                <th className="px-6 py-2 text-xs text-gray-600">قیمت کل</th>
+                <th className="px-6 py-2 text-xs text-gray-600">
+                  زمان ثبت سفارش
+                </th>
+                <th className="px-6 py-2 text-xs text-gray-600">حذف</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y-2">
@@ -102,17 +106,24 @@ const Cart = () => {
                     <div className="text-sm text-gray-600">{product.name}</div>
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-600">
-                    <FontAwesomeIcon
+                    {/* <FontAwesomeIcon
                       icon={faArrowDown}
                       className="cursor-pointer text-red-400 mx-2"
                       onClick={() => deleteCartHandler(product)}
-                    />{" "}
-                    {product.quantity}{" "}
+                    />{" "} */}
+                    {product.quantity}
+                    {/* {" "}
                     <FontAwesomeIcon
                       icon={faArrowUp}
                       className="cursor-pointer text-green-400 mx-2"
                       onClick={() => addToCartHandler(product)}
-                    />
+                    /> */}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-600">
+                    {product.size}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-600">
+                    {product.color}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-600">
                     ${" "}
@@ -128,7 +139,7 @@ const Cart = () => {
                     onClick={() => deleteAllHandler(product)}
                   >
                     <button className="px-4 py-1 text-sm text-white bg-red-400 rounded">
-                      Delete All
+                      حذف
                     </button>
                   </td>
                 </tr>

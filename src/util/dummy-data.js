@@ -111,6 +111,7 @@ const DUMMY_DATA = () => {
         colors: ["lightGreen", "red", "yellow"],
         cover: "red",
         categories: ["ورزشی"],
+        numInStock: 3,
       },
       {
         id: 2,
@@ -122,6 +123,7 @@ const DUMMY_DATA = () => {
         colors: ["yellow", "black", "blue"],
         cover: "purple",
         categories: ["روزمره"],
+        numInStock: 3,
       },
       {
         id: 3,
@@ -133,6 +135,7 @@ const DUMMY_DATA = () => {
         colors: ["red", "gray", "yellow"],
         cover: "green",
         categories: ["روزمره", "رسمی"],
+        numInStock: 3,
       },
       {
         id: 4,
@@ -144,6 +147,7 @@ const DUMMY_DATA = () => {
         colors: ["yellow", "red", "blue"],
         cover: "green",
         categories: ["روزمره", "ورزشی"],
+        numInStock: 3,
       },
       {
         id: 5,
@@ -155,6 +159,7 @@ const DUMMY_DATA = () => {
         colors: ["blue", "white", "cyan"],
         cover: "orange",
         categories: ["ورزشی", "رسمی"],
+        numInStock: 3,
       },
       {
         id: 6,
@@ -166,6 +171,7 @@ const DUMMY_DATA = () => {
         colors: ["cyan", "red", "white"],
         cover: "blue",
         categories: ["ورزشی"],
+        numInStock: 3,
       },
     ],
   };
