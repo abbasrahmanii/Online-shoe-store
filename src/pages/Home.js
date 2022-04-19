@@ -10,7 +10,7 @@ import Menu from "../components/Menu";
 
 const Home = () => {
   const { state } = useContext(Store);
-  const { cityData } = state;
+  const { homeData } = state;
 
   return (
     <>
@@ -22,7 +22,7 @@ const Home = () => {
         animate="show"
         exit="exit"
       >
-        {cityData.map((data) => (
+        {homeData.map((data) => (
           <City key={data.id}>
             <Image
               variants={imageAnim}
@@ -30,7 +30,7 @@ const Home = () => {
               animate="show"
               exit="exit"
             >
-              <img src={data.images[0]} alt={data.name} />
+              <img src={data.poster} alt={data.name} />
             </Image>
             <Desc variants={descAnim} initial="hidden" animate="show">
               <Hide>
@@ -39,9 +39,10 @@ const Home = () => {
                 <p>{data.desc}</p>
                 <Link
                   to={data.url}
-                  className="bg-fuchsia-700 shadow-lg shadow-fuchsia-700/50 rounded-l-full rounded-t-full"
+                  className="rounded-l-full rounded-b-full"
+                  style={{ backgroundColor: data.color }}
                 >
-                  Read More ...
+                  خرید ...
                 </Link>
               </Hide>
             </Desc>
@@ -58,13 +59,12 @@ const HomeStyles = styled(motion.div)`
   background-color: #29212e;
   width: 100%;
   min-height: 100vh;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   z-index: 1;
 `;
 const City = styled.div`
   width: 100%;
   display: flex;
-  /* align-items: stretch; */
   flex-wrap: wrap;
   padding: 1rem 2rem;
   margin: 2rem 0;
@@ -72,9 +72,7 @@ const City = styled.div`
 
 const Image = styled(motion.div)`
   flex: 1;
-  /* min-width: 35rem; */
   flex-basis: 25rem;
-  /* height: 100%; */
   z-index: 50;
   img {
     width: 100%;
@@ -86,13 +84,13 @@ const Image = styled(motion.div)`
 const Desc = styled(motion.div)`
   flex: 1;
   flex-basis: 25rem;
-  margin-left: 3rem;
+  margin-right: 2rem;
+  padding-right: 1rem;
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: #eaeaea;
-    font-family: "Caveat", cursive;
-    padding-right: 4rem;
+    /* font-family: "Caveat", cursive; */
   }
   h3 {
     color: #fff;

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Store } from "../context/Store";
+import queryString from "query-string";
 
 import Nav from "../components/Nav";
 import Menu from "../components/Menu";
@@ -12,6 +13,10 @@ const Shop = () => {
   const { state, dispatch } = useContext(Store);
   const { products, filteredShoes, cart } = state;
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const parsed = queryString.parse(location.search);
+  const { category } = parsed;
 
   const addToCartHandler = (product) => {
     const isInStock = products.find((p) => p.id === product.id);
@@ -36,7 +41,7 @@ const Shop = () => {
       {/* <div className="w-full flex space-s-8 flex-wrap"> */}
       <div className="grid grid-col-1 md:grid-cols-4">
         {/* <div className="flex flex-col items-center mb-6 w-full md:w-1/5"> */}
-        <Filter />
+        <Filter category={category} />
         {filteredShoes.length > 0 ? (
           <div className="md:col-end-5 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center">
             {filteredShoes.map((shoe) => (

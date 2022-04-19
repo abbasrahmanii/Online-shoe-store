@@ -4,7 +4,7 @@ import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
 
-const Filter = () => {
+const Filter = ({ category }) => {
   const { state, dispatch } = useContext(Store);
   const { shoes } = state;
 
@@ -19,16 +19,20 @@ const Filter = () => {
   }
 
   const allColors = [...new Set(colors)];
-  const allCategories = ["روزمره", "ورزشی", "رسمی"];
+  const allCategories = ["رسمی", "روزمره", "ورزشی"];
 
   const categoryHandler = useCallback(
-    (e, InputName) => {
-      if (e.target.checked) {
-        setCategorySelected([...categorySelected, InputName]);
+    (e, inputName) => {
+      if (e) {
+        if (e.target.checked) {
+          setCategorySelected([...categorySelected, inputName]);
+        } else {
+          setCategorySelected(
+            categorySelected.filter((name) => name !== inputName)
+          );
+        }
       } else {
-        setCategorySelected(
-          categorySelected.filter((name) => name !== InputName)
-        );
+        setCategorySelected([...categorySelected, inputName]);
       }
     },
     [categorySelected]
@@ -90,6 +94,18 @@ const Filter = () => {
       }
     }
   }, [colorSelected, categorySelected, dispatch, shoes]);
+
+  useEffect(() => {
+    if (category) {
+      if (category === "party") {
+        categoryHandler("", "رسمی");
+      } else if (category === "lifestyle") {
+        categoryHandler("", "روزمره");
+      } else if (category === "sport") {
+        categoryHandler("", "ورزشی");
+      }
+    }
+  }, []);
 
   return (
     <div className="flex flex-col md:fixed right-0 md:w-1/4">

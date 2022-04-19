@@ -13,6 +13,7 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import Order from "./pages/Order";
+import ShoeDetail from "./pages/ShoeDetail";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path=":id" element={<City />} />
             <Route path="shop" element={<Shop />} />
             <Route path="shop/:id" element={<Product />} />
+            <Route path="shop/shoes/:id" element={<ShoeDetail />} />
             <Route path="cart" element={<Cart />} />
             <Route path="order" element={<Order />} />
             <Route path="form" element={<Form />} />

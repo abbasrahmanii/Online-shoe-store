@@ -157,7 +157,6 @@ const Card = styled.div`
         font-weight: 300;
         font-size: 0.8rem;
         text-transform: uppercase;
-        letter-spacing: 2px;
         /* margin-right: 10px; */
       }
 
