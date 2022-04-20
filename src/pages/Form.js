@@ -8,17 +8,22 @@ const initialState = {
   firstName: {
     value: "",
     isValid: false,
-    error: "Enter Your First Name !",
+    error: "نام خود را وارد کنید",
   },
   lastName: {
     value: "",
     isValid: false,
-    error: "Enter Your Last Name !",
+    error: "نام خانوادگی خود را وارد کنید",
   },
   password: {
     value: "",
     isValid: false,
-    error: "Enter Your Password !",
+    error: "رمز عبور خود را وارد کنید",
+  },
+  confirmPassword: {
+    value: "",
+    isValid: false,
+    error: "تأیید رمز عبور خود را وارد کنید",
   },
   isValid: false,
 };
@@ -26,19 +31,9 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "ONCHANGE_INPUT":
-      let isValid;
-      if (action.payload.length !== 0) {
-        isValid = true;
-      } else {
-        isValid = false;
-      }
       return {
         ...state,
-        [action.tag]: {
-          ...state.firstName,
-          value: action.payload,
-          isValid,
-        },
+        [action.tag]: action.changedValue,
       };
     default:
       return state;
@@ -49,111 +44,196 @@ const Form = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
+  const required = (e, tag) => {
+    let isValid = e.target.value.length !== 0;
+    console.log(state[tag]);
+    console.log(e.target.value);
+    dispatch({
+      type: "ONCHANGE_INPUT",
+      changedValue: { ...state[tag], value: e.target.value, isValid },
+      tag,
+    });
+  };
+
   return (
     <>
       <Nav />
       <Menu />
-      <form
-        className="form flex flex-col p-4 items-center bg-teal-800 h-screen"
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log("submitted");
-          navigate("/");
-        }}
-      >
-        <div className="mb-4">
-          <label
-            htmlFor="first-name"
-            className="block text-sm font-medium text-white"
-          >
-            First Name
-          </label>
-          <input
-            id="first-name"
-            className="bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
-            type="text"
-            value={state.firstName.value}
-            autoComplete="none"
-            onChange={(e) =>
-              dispatch({
-                type: "ONCHANGE_INPUT",
-                tag: "firstName",
-                payload: e.target.value,
-              })
-            }
-          />
-          {!state.firstName.isValid && (
-            <p className="text-red-500 text-xs">{state.lastName.error}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="last-name"
-            className="block text-sm font-medium text-white"
-          >
-            Last Name
-          </label>
-          <input
-            id="last-name"
-            className=" bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
-            type="text"
-            value={state.lastName.value}
-            autoComplete="name"
-            onChange={(e) =>
-              dispatch({
-                type: "ONCHANGE_INPUT",
-                tag: "lastName",
-                payload: e.target.value,
-              })
-            }
-          />
-          {!state.lastName.isValid && (
-            <p className="text-red-500 text-xs">{state.lastName.error}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-white"
-          >
-            Password
-          </label>
-          <input
-            id="password"
-            className="form-control bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
-            type="password"
-            value={state.password.value}
-            autoComplete="current-password"
-            onChange={(e) =>
-              dispatch({
-                type: "ONCHANGE_INPUT",
-                tag: "password",
-                payload: e.target.value,
-              })
-            }
-          />
-          {!state.password.isValid && (
-            <p className="text-red-500 text-xs">{state.lastName.error}</p>
-          )}
-        </div>
-        <Link
-          to={`/form/sign?name=${state.firstName.value}-${state.lastName.value}&pass=${state.password.value}`}
+      <div className="grid grid-cols-2 bg-gradient-to-bl from-slate-900 to-indigo-900 h-screen divide-s-2 divide-slate-600">
+        <form
+          className="form flex flex-col p-4 items-center"
+          onSubmit={(e) => {
+            e.preventDefault();
+            navigate("/");
+          }}
         >
-          <button
-            type="submit"
-            className="btn bg-teal-200 p-2 rounded-md outline-none"
-            disabled={
-              !(
-                state.password.isValid &&
-                state.firstName.isValid &&
-                state.password.isValid
-              )
-            }
+          <h1 className="text-2xl text-white mb-5">ثبت نام</h1>
+          <div className="mb-3">
+            <label
+              htmlFor="first-name"
+              className="block text-sm font-medium text-white"
+            >
+              نام
+            </label>
+            <input
+              id="first-name"
+              className="bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
+              type="text"
+              required
+              value={state.firstName.value}
+              autoComplete="none"
+              onChange={(e) => required(e, "firstName")}
+            />
+            {!state.firstName.isValid && (
+              <p className="text-red-500 text-xs">{state.firstName.error}</p>
+            )}
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="last-name"
+              className="block text-sm font-medium text-white"
+            >
+              نام خانوادگی
+            </label>
+            <input
+              id="last-name"
+              className=" bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
+              type="text"
+              required
+              value={state.lastName.value}
+              autoComplete="name"
+              onChange={(e) => required(e, "lastName")}
+            />
+            {!state.lastName.isValid && (
+              <p className="text-red-500 text-xs">{state.lastName.error}</p>
+            )}
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
+              رمز عبور
+            </label>
+            <input
+              id="password"
+              className="form-control bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
+              type="password"
+              required
+              value={state.password.value}
+              autoComplete="current-password"
+              onChange={(e) => required(e, "password")}
+            />
+            {!state.password.isValid && (
+              <p className="text-red-500 text-xs">{state.password.error}</p>
+            )}
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
+              تأیید رمز عبور
+            </label>
+            <input
+              id="confirm-password"
+              className="form-control bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
+              type="confirmPassword"
+              required
+              value={state.confirmPassword.value}
+              autoComplete="current-password"
+              onChange={(e) => required(e, "confirmPassword")}
+            />
+            {!state.confirmPassword.isValid && (
+              <p className="text-red-500 text-xs">
+                {state.confirmPassword.error}
+              </p>
+            )}
+          </div>
+          <Link
+            to={`/form/sign?name=${state.firstName.value}-${state.lastName.value}&pass=${state.password.value}`}
           >
-            Submit
-          </button>
-        </Link>
-      </form>
+            <button
+              type="submit"
+              className="btn bg-teal-200 p-2 rounded-md outline-none"
+              disabled={
+                !(
+                  state.password.isValid &&
+                  state.firstName.isValid &&
+                  state.password.isValid &&
+                  state.confirmPassword.isValid
+                )
+              }
+            >
+              ثبت نام
+            </button>
+          </Link>
+        </form>
+        <form
+          className="form flex flex-col p-4 items-center "
+          onSubmit={(e) => {
+            e.preventDefault();
+            navigate("/");
+          }}
+        >
+          <h1 className="text-2xl text-white mb-5">ورود</h1>
+          <div className="mb-3">
+            <label
+              htmlFor="first-name2"
+              className="block text-sm font-medium text-white"
+            >
+              نام
+            </label>
+            <input
+              id="first-name2"
+              className="bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
+              type="text"
+              required
+              autoComplete="none"
+            />
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="last-name2"
+              className="block text-sm font-medium text-white"
+            >
+              نام خانوادگی
+            </label>
+            <input
+              id="last-name2"
+              className=" bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
+              type="text"
+              required
+              autoComplete="name"
+            />
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="password2"
+              className="block text-sm font-medium text-white"
+            >
+              رمز عبور
+            </label>
+            <input
+              id="password2"
+              className="form-control bg-purple-200 w-60 p-2 my-2 rounded-md outline-none"
+              type="password"
+              required
+              autoComplete="current-password"
+            />
+          </div>
+          <Link
+            to={`/form/sign?name=${state.firstName.value}-${state.lastName.value}&pass=${state.password.value}`}
+          >
+            <button
+              type="submit"
+              className="btn bg-teal-200 p-2 rounded-md outline-none"
+            >
+              ورود
+            </button>
+          </Link>
+        </form>
+      </div>
     </>
   );
 };

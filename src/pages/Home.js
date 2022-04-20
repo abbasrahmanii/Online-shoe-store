@@ -35,7 +35,6 @@ const Home = () => {
             <Desc variants={descAnim} initial="hidden" animate="show">
               <Hide>
                 <h1>{data.name}</h1>
-                <h3>{data.country}</h3>
                 <p>{data.desc}</p>
                 <Link
                   to={data.url}
@@ -90,7 +89,6 @@ const Desc = styled(motion.div)`
     font-size: 2.5rem;
     font-weight: bold;
     color: #eaeaea;
-    /* font-family: "Caveat", cursive; */
   }
   h3 {
     color: #fff;
@@ -108,8 +106,6 @@ const Desc = styled(motion.div)`
     display: inline;
     width: max-content;
     &:hover {
-      letter-spacing: 0.15rem;
-      padding: 0.5rem 0.6rem;
       border: 1px solid transparent;
     }
   }

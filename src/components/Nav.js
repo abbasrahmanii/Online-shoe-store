@@ -7,8 +7,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
 import { navBorder } from "./animation";
-import logo from "../images/nike_PNG18.png";
-import logo2 from "../images/6-2-nike-logo-free-png-image.png";
+import logo from "../images/6-2-nike-logo-free-png-image.png";
 
 const Nav = () => {
   const { state, dispatch } = useContext(Store);
@@ -16,7 +15,7 @@ const Nav = () => {
   const location = useLocation();
 
   return (
-    <NavStyles className="bg-gradient-to-r from-cyan-500 to-indigo-800 flex justify-between p-5 sticky top-0 left-0 shadow-lg px-8">
+    <NavStyles className="bg-gradient-to-r from-cyan-500 to-indigo-800 flex justify-between p-5 sticky top-0 left-0 shadow-lg px-8 items-center">
       <FontAwesomeIcon
         icon={faBars}
         color="white"
@@ -26,7 +25,7 @@ const Nav = () => {
       <ul className="space-s-6 hidden md:flex">
         <li>
           <Link to="/">
-            <h1 className="text-white">خانه</h1>
+            <h1 className="text-white py-1">خانه</h1>
           </Link>
           {location.pathname === "/" && (
             <motion.div
@@ -56,7 +55,7 @@ const Nav = () => {
           ))} */}
         <li>
           <Link to="/shop">
-            <h1 className="text-white">فروشگاه</h1>
+            <h1 className="text-white py-1">فروشگاه</h1>
           </Link>
           {location.pathname === "/shop" && (
             <motion.div
@@ -70,7 +69,7 @@ const Nav = () => {
         </li>
         <li>
           <Link to="/cart">
-            <h1 className="text-white relative">
+            <h1 className="text-white py-1 relative">
               سبد خرید
               {cart.length > 0 && (
                 <span className="absolute -top-2 -right-2 text-sky-200 text-sm rounded-full bg-orange-600 w-4 h-4 flex items-center justify-center">
@@ -91,7 +90,7 @@ const Nav = () => {
         </li>
         <li>
           <Link to="/form">
-            <h1 className="text-white">ورود</h1>
+            <h1 className="text-white py-1">ثبت نام | ورود</h1>
           </Link>
           {location.pathname === "/form" && (
             <motion.div
@@ -108,7 +107,7 @@ const Nav = () => {
         {/* <h1 className="cursor-pointer block text-white md:text-indigo-900 text-md font-semibold">
           لوگو
         </h1> */}
-        <img src={logo2} alt="logo" className="w-14 object-cover" />
+        <img src={logo} alt="nike-logo" className="w-14 object-cover" />
       </Link>
     </NavStyles>
   );
