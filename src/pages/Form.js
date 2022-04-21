@@ -227,7 +227,7 @@ const Form = () => {
           >
             <button
               type="submit"
-              className="btn bg-teal-200 p-2 rounded-md outline-none"
+              className="bg-teal-200 p-2 rounded-md outline-none"
             >
               ورود
             </button>
