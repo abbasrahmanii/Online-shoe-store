@@ -34,11 +34,11 @@ const Home = () => {
             </Image>
             <Desc variants={descAnim} initial="hidden" animate="show">
               <Hide>
-                <h1>{data.name}</h1>
-                <p>{data.desc}</p>
+                <h1 className="text-center md:text-right">{data.name}</h1>
+                <p className="text-center md:text-right">{data.desc}</p>
                 <Link
                   to={data.url}
-                  className="rounded-l-full rounded-b-full"
+                  className="rounded-tl-full rounded-b-full self-center md:self-start"
                   style={{ backgroundColor: data.color }}
                 >
                   خرید ...

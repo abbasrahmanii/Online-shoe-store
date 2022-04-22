@@ -1,7 +1,13 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faCartShopping,
+  faCircleXmark,
+  faHouse,
+  faStore,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
 
@@ -41,29 +47,14 @@ const Menu = () => {
             className="w-full pt-3"
           >
             <h1
-              className="text-slate-100 text-lg"
+              className="text-slate-100 flex space-s-5 items-center"
               style={pathname === "/" ? activeMenuStyle : null}
             >
+              <FontAwesomeIcon icon={faHouse} className="ml-2" />
               خانه
             </h1>
           </Link>
         </li>
-        {/* {cityData.map((data) => (
-          <li key={data.id} className="pt-3">
-            <Link
-              to={data.url}
-              onClick={() => dispatch({ type: "MENU_TOGGLE" })}
-              className="w-full"
-            >
-              <h1
-                className="text-slate-100 text-lg"
-                style={pathname === data.url ? activeMenuStyle : null}
-              >
-                {data.name}
-              </h1>
-            </Link>
-          </li>
-        ))} */}
         <li className="pt-3">
           <Link
             to="/shop"
@@ -71,9 +62,10 @@ const Menu = () => {
             className="w-full"
           >
             <h1
-              className="text-slate-100"
+              className="text-slate-100 flex space-s-5 items-center"
               style={pathname === "/shop" ? activeMenuStyle : null}
             >
+              <FontAwesomeIcon icon={faStore} className="ml-2" />
               فروشگاه
             </h1>
           </Link>
@@ -85,9 +77,10 @@ const Menu = () => {
             className="w-full"
           >
             <h1
-              className="text-slate-100"
+              className="text-slate-100 flex space-s-5 items-center"
               style={pathname === "/cart" ? activeMenuStyle : null}
             >
+              <FontAwesomeIcon icon={faCartShopping} className="ml-2" />
               سبد خرید
             </h1>
           </Link>
@@ -99,10 +92,14 @@ const Menu = () => {
             className="w-full"
           >
             <h1
-              className="text-slate-100"
+              className="text-slate-100 flex space-s-5 items-center"
               style={pathname === "/form" ? activeMenuStyle : null}
             >
-              ورود
+              <FontAwesomeIcon
+                icon={faArrowRightFromBracket}
+                className="ml-2"
+              />
+              ثبت نام | ورود
             </h1>
           </Link>
         </li>

@@ -18,7 +18,8 @@ const Nav = () => {
     <NavStyles className="bg-gradient-to-r from-cyan-500 to-indigo-800 flex justify-between p-5 sticky top-0 left-0 shadow-lg px-8 items-center">
       <FontAwesomeIcon
         icon={faBars}
-        color="white"
+        size="lg"
+        color="#fff"
         className="cursor-pointer md:hidden"
         onClick={() => dispatch({ type: "MENU_TOGGLE" })}
       />
@@ -104,9 +105,6 @@ const Nav = () => {
         </li>
       </ul>
       <Link to="/">
-        {/* <h1 className="cursor-pointer block text-white md:text-indigo-900 text-md font-semibold">
-          لوگو
-        </h1> */}
         <img src={logo} alt="nike-logo" className="w-14 object-cover" />
       </Link>
     </NavStyles>

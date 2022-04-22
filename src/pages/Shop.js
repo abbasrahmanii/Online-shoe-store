@@ -43,7 +43,7 @@ const Shop = () => {
         {/* <div className="flex flex-col items-center mb-6 w-full md:w-1/5"> */}
         <Filter category={category} />
         {filteredShoes.length > 0 ? (
-          <div className="md:col-end-5 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center">
+          <div className="md:col-end-5 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center mb-10">
             {filteredShoes.map((shoe) => (
               <NewCard
                 shoe={shoe}
