@@ -70,15 +70,15 @@ const ShoeDetail = () => {
     <div className="bg-dark-background min-h-screen">
       <Nav />
       <Menu />
-      <div className="text-white grid grid-cols-8 gap-4 w-full">
-        <div className="col-span-3">
+      <div className="text-white grid grid-cols-1 md:grid-cols-8 gap-4 w-full">
+        <div className="md:col-span-3">
           <img
             src={shoe.image}
             alt={shoe.name}
             className="object-cover w-full h-auto"
           />
         </div>
-        <div className="p-4 col-span-3 flex flex-col space-y-4">
+        <div className="p-4 col-span-1 md:col-span-3 flex flex-col space-y-4 md:pr-10 items-center md:items-start">
           <h1 className="font-bold text-2xl">{shoe.name}</h1>
           <div className="flex space-s-4 items-center">
             <h3>اندازه :</h3>
@@ -104,41 +104,41 @@ const ShoeDetail = () => {
           <p className="">موجود در انبار : {shoe.numInStock} عدد</p>
           <p className="">قیمت : {shoe.price}</p>
         </div>
-        <div className="p-4 col-span-2 flex flex-col space-y-5">
-          <div className="flex space-s-4 items-center">
-            <h1>اندازه :</h1>
-            <select
-              className="appearance-none rounded-md py-1 px-4 outline-none bg-slate-100 text-black"
-              name="size"
-              id="size"
-              onChange={(e) => selectHandler(e)}
-              value={shoeDetail[0]}
-            >
-              {shoe.sizes.map((size, index) => (
-                <option key={index} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
+        <div className="p-4 col-span-1 md:col-span-2 flex flex-col space-y-5">
+          <div className="flex md:flex-col items-center md:items-start justify-center space-s-8 md:space-s-0 md:space-y-5">
+            <div className="flex space-s-4 items-center">
+              <h1>اندازه :</h1>
+              <select
+                className="appearance-none rounded-md py-1 px-4 outline-none bg-slate-100 text-black"
+                name="size"
+                id="size"
+                onChange={(e) => selectHandler(e)}
+                value={shoeDetail[0]}
+              >
+                {shoe.sizes.map((size, index) => (
+                  <option key={index} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex space-s-4 items-center">
+              <h1>رنگ :</h1>
+              <select
+                className="appearance-none rounded-md py-1 px-4 outline-none bg-slate-100 text-black"
+                name="color"
+                id="color"
+                onChange={(e) => selectHandler(e)}
+                value={shoeDetail[1]}
+              >
+                {shoe.colors.map((color, index) => (
+                  <option key={index} value={color}>
+                    {color}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="flex space-s-4 items-center">
-            <h1>رنگ :</h1>
-            <select
-              className="appearance-none rounded-md py-1 px-4 outline-none bg-slate-100 text-black"
-              name="color"
-              id="color"
-              onChange={(e) => selectHandler(e)}
-              value={shoeDetail[1]}
-            >
-              {shoe.colors.map((color, index) => (
-                <option key={index} value={color}>
-                  {color}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* <p className="text-black">{shoeDetail[0]}</p>
-          <p className="text-black">{shoeDetail[1]}</p> */}
           <button
             className="bg-lime-600 py-2 rounded-lg text-lime-50 shadow-lg shadow-lime-600/30"
             onClick={addToCartHandler}

@@ -52,8 +52,9 @@ const Cart = () => {
           </h5>
         </>
       ) : (
-        <div className="flex items-start w-full justify-center space-s-8">
-          <div className="bg-rose-900 p-5 rounded-lg text-white shadow-lg shadow-rose-900/70 ">
+        // <div className="grid items-start w-full justify-center gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 w-full md:gap-8 justify-items-center items-center">
+          <div className="col-span-1 bg-rose-900 p-5 rounded-lg text-white shadow-lg shadow-rose-900/70">
             <p>
               تعداد محصولات : {cart && cart.reduce((a, c) => a + c.quantity, 0)}
             </p>
@@ -70,82 +71,85 @@ const Cart = () => {
               ادامه سفارش
             </button>
           </div>
-
-          <table className="w-3/4 text-center table-auto">
-            <thead className=" bg-gradient-to-r from-slate-400 to-slate-300">
-              <tr>
-                <th className="px-6 py-2 text-xs text-gray-600">شناسه</th>
-                <th className="px-6 py-2 text-xs text-gray-600">تصویر</th>
-                <th className="px-6 py-2 text-xs text-gray-600">نام</th>
-                <th className="px-6 py-2 text-xs text-gray-600">تعداد</th>
-                <th className="px-6 py-2 text-xs text-gray-600">اندازه</th>
-                <th className="px-6 py-2 text-xs text-gray-600">رنگ</th>
-                <th className="px-6 py-2 text-xs text-gray-600">قیمت کل</th>
-                <th className="px-6 py-2 text-xs text-gray-600">
-                  زمان ثبت سفارش
-                </th>
-                <th className="px-6 py-2 text-xs text-gray-600">حذف</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y-2">
-              {cart.map((product) => (
-                <tr key={product.id} className="whitespace-nowrap">
-                  <td className="px-6 py-4 text-sm text-gray-600">
-                    {product.id}
-                  </td>
-                  <td className="px-6 py-4 flex justify-center">
-                    <Link to={`/shop/${product.id}`}>
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-12 h-12"
-                      />
-                    </Link>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-gray-600">{product.name}</div>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">
-                    {/* <FontAwesomeIcon
+          <div className="md:col-span-3 mt-5 md:mt-0 w-full px-3 overflow-x-auto">
+            <table className="text-center table-fixed">
+              <thead className=" bg-gradient-to-r from-slate-400 to-slate-300">
+                <tr>
+                  <th className="px-6 py-2 text-xs text-gray-600">شناسه</th>
+                  <th className="px-6 py-2 text-xs text-gray-600">تصویر</th>
+                  <th className="px-6 py-2 text-xs text-gray-600">نام</th>
+                  <th className="px-6 py-2 text-xs text-gray-600">تعداد</th>
+                  <th className="px-6 py-2 text-xs text-gray-600">اندازه</th>
+                  <th className="px-6 py-2 text-xs text-gray-600">رنگ</th>
+                  <th className="px-6 py-2 text-xs text-gray-600">قیمت کل</th>
+                  <th className="px-6 py-2 text-xs text-gray-600">
+                    زمان ثبت سفارش
+                  </th>
+                  <th className="px-6 py-2 text-xs text-gray-600">حذف</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y-2">
+                {cart.map((product) => (
+                  <tr key={product.id} className="whitespace-nowrap">
+                    <td className="px-6 py-4 text-sm text-gray-600">
+                      {product.id}
+                    </td>
+                    <td className="px-6 py-4 flex justify-center">
+                      <Link to={`/shop/${product.id}`}>
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-12 h-12"
+                        />
+                      </Link>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-sm text-gray-600">
+                        {product.name}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-600">
+                      {/* <FontAwesomeIcon
                       icon={faArrowDown}
                       className="cursor-pointer text-red-400 mx-2"
                       onClick={() => deleteCartHandler(product)}
                     />{" "} */}
-                    {product.quantity}
-                    {/* {" "}
+                      {product.quantity}
+                      {/* {" "}
                     <FontAwesomeIcon
-                      icon={faArrowUp}
-                      className="cursor-pointer text-green-400 mx-2"
-                      onClick={() => addToCartHandler(product)}
+                    icon={faArrowUp}
+                    className="cursor-pointer text-green-400 mx-2"
+                    onClick={() => addToCartHandler(product)}
                     /> */}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">
-                    {product.size}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">
-                    {product.color}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">
-                    ${" "}
-                    {(product.quantity * product.price.split(" ")[1]).toFixed(
-                      2
-                    )}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">
-                    {product.date}
-                  </td>
-                  <td
-                    className="px-6 py-4 text-sm text-gray-500"
-                    onClick={() => deleteAllHandler(product)}
-                  >
-                    <button className="px-4 py-1 text-sm text-white bg-red-400 rounded">
-                      حذف
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-600">
+                      {product.size}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-600">
+                      {product.color}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-600">
+                      ${" "}
+                      {(product.quantity * product.price.split(" ")[1]).toFixed(
+                        2
+                      )}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-600">
+                      {product.date}
+                    </td>
+                    <td
+                      className="px-6 py-4 text-sm text-gray-500"
+                      onClick={() => deleteAllHandler(product)}
+                    >
+                      <button className="px-4 py-1 text-sm text-white bg-red-400 rounded">
+                        حذف
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

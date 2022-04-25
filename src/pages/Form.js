@@ -59,7 +59,7 @@ const Form = () => {
     <>
       <Nav />
       <Menu />
-      <div className="grid grid-cols-2 bg-gradient-to-bl from-slate-900 to-indigo-900 h-screen divide-s-2 divide-slate-600">
+      <div className="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-bl from-slate-900 to-indigo-900 min-h-screen md:divide-s-2 divide-y-2 divide-slate-600">
         <form
           className="form flex flex-col p-4 items-center"
           onSubmit={(e) => {
