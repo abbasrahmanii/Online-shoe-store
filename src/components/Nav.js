@@ -15,7 +15,7 @@ const Nav = () => {
   const location = useLocation();
 
   return (
-    <NavStyles className="bg-gradient-to-r from-cyan-500 to-indigo-800 flex justify-between p-5 sticky top-0 left-0 shadow-lg px-8 items-center">
+    <NavStyles className="bg-gradient-to-r from-cyan-500 to-indigo-800 flex justify-between sticky top-0 left-0 shadow-lg px-8 items-center h-16">
       <FontAwesomeIcon
         icon={faBars}
         size="lg"
