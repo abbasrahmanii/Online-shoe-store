@@ -85,7 +85,7 @@ const ShoeDetail = () => {
             {shoe.sizes.map((size, index) => (
               <span
                 key={index}
-                className="text-sm bg-slate-300 w-5 h-5 text-center text-black rounded-full"
+                className="text-sm bg-slate-300 w-7 h-7 flex items-center justify-center text-black rounded-full"
               >
                 {size}
               </span>
