@@ -14,7 +14,10 @@ const ShoeDetail = () => {
 
   const shoe = shoes.find((shoe) => shoe.id === paramsId);
 
-  const [shoeDetail, setShoeDetail] = useState([shoe.sizes[0], shoe.colors[0]]);
+  const [shoeDetail, setShoeDetail] = useState([
+    shoe.sizes[0],
+    shoe.colorsFarsi[0],
+  ]);
 
   const selectHandler = (e) => {
     if (e.target.name === "size") {
@@ -102,7 +105,7 @@ const ShoeDetail = () => {
             ))}
           </div>
           <p className="">موجود در انبار : {shoe.numInStock} عدد</p>
-          <p className="">قیمت : {shoe.price}</p>
+          <p className="">قیمت : {shoe.price} تومان</p>
         </div>
         <div className="p-4 col-span-1 md:col-span-2 flex flex-col space-y-5">
           <div className="flex md:flex-col items-center md:items-start justify-center space-s-8 md:space-s-0 md:space-y-5">
@@ -131,7 +134,7 @@ const ShoeDetail = () => {
                 onChange={(e) => selectHandler(e)}
                 value={shoeDetail[1]}
               >
-                {shoe.colors.map((color, index) => (
+                {shoe.colorsFarsi.map((color, index) => (
                   <option key={index} value={color}>
                     {color}
                   </option>

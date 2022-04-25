@@ -39,11 +39,11 @@ const Shop = () => {
       <Nav />
       <Menu />
       {/* <div className="w-full flex space-s-8 flex-wrap"> */}
-      <div className="grid grid-col-1 md:grid-cols-4">
+      <div className="grid grid-col-1 md:grid-cols-4 mt-6">
         {/* <div className="flex flex-col items-center mb-6 w-full md:w-1/5"> */}
         <Filter category={category} />
         {filteredShoes.length > 0 ? (
-          <div className="md:col-end-5 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:col-end-5 md:col-span-3 gap-6 place-items-center mb-10">
             {filteredShoes.map((shoe) => (
               <NewCard
                 shoe={shoe}

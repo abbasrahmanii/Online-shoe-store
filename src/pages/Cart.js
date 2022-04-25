@@ -40,10 +40,12 @@ const Cart = () => {
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-slate-700">
       <Nav />
       <Menu />
-      <h1 className="text-white text-center m-4 text-2xl">سبد خرید</h1>
+      {/* <h1 className="text-white text-center m-4 text-2xl">سبد خرید</h1> */}
       {cart.length < 1 ? (
         <>
-          <h3 className="text-white text-center m-2">سبد خالی خالی است!</h3>
+          <h3 className="text-white text-center m-2 pt-5">
+            سبد خالی خالی است!
+          </h3>
           <h5
             className="text-cyan-300 hover:text-blue-300 text-center text-sm m-2 cursor-pointer"
             onClick={() => navigate("/shop")}
@@ -53,16 +55,15 @@ const Cart = () => {
         </>
       ) : (
         // <div className="grid items-start w-full justify-center gap-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 w-full md:gap-8 justify-items-center items-center">
-          <div className="col-span-1 bg-rose-900 p-5 rounded-lg text-white shadow-lg shadow-rose-900/70">
+        <div className="grid grid-cols-1 md:grid-cols-4 w-full md:gap-8 justify-items-center items-center pt-8">
+          <div className="col-span-1 bg-rose-900 p-5 rounded-lg text-white shadow-lg shadow-rose-900/70 self-start">
             <p>
-              تعداد محصولات : {cart && cart.reduce((a, c) => a + c.quantity, 0)}
+              تعداد محصولات : {cart && cart.reduce((a, c) => a + c.quantity, 0)}{" "}
+              عدد
             </p>
             <p>
-              مجموع قیمت : ${" "}
-              {cart
-                .reduce((a, c) => a + c.price.split(" ")[1] * c.quantity, 0)
-                .toFixed(2)}
+              مجموع قیمت : {cart.reduce((a, c) => a + c.price * c.quantity, 0)}{" "}
+              تومان
             </p>
             <button
               className="mt-4 text-sm w-full bg-slate-100 rounded-md py-1 text-rose-900 hover:shadow-xl"
@@ -95,7 +96,7 @@ const Cart = () => {
                       {product.id}
                     </td>
                     <td className="px-6 py-4 flex justify-center">
-                      <Link to={`/shop/${product.id}`}>
+                      <Link to={`/shop/shoes/${product.id}`}>
                         <img
                           src={product.image}
                           alt={product.name}
@@ -129,10 +130,7 @@ const Cart = () => {
                       {product.color}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600">
-                      ${" "}
-                      {(product.quantity * product.price.split(" ")[1]).toFixed(
-                        2
-                      )}
+                      {product.quantity * product.price} تومان
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600">
                       {product.date}
@@ -141,7 +139,7 @@ const Cart = () => {
                       className="px-6 py-4 text-sm text-gray-500"
                       onClick={() => deleteAllHandler(product)}
                     >
-                      <button className="px-4 py-1 text-sm text-white bg-red-400 rounded">
+                      <button className="px-4 py-1 text-sm text-white bg-red-400 rounded hover:bg-red-500 transition-all ease-out duration-500">
                         حذف
                       </button>
                     </td>

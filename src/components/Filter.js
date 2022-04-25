@@ -109,7 +109,7 @@ const Filter = ({ category }) => {
 
   return (
     <div className="flex flex-col md:fixed right-0 md:w-1/4">
-      <div className=" bg-cyan-400 flex flex-col rounded-xl mx-4 my-4 p-4">
+      <div className=" bg-cyan-400 flex flex-col rounded-xl mx-4 p-4">
         <h2 className="mb-1">دسته بندی :</h2>
         {allCategories.map((cat, index) => (
           <div key={index}>
@@ -179,7 +179,7 @@ const Filter = ({ category }) => {
         </div>
       </div>
       <div className="bg-lime-600 flex flex-col rounded-xl mx-4 my-4 p-4">
-        <h1 className="mb-1">مرتب سازی :</h1>
+        <h1 className="mb-2">مرتب سازی :</h1>
         <select
           className="appearance-none rounded-md bg-slate-50 p-1 outline-none"
           name="sort"

@@ -1,5 +1,7 @@
 module.exports = {
+  // content: ["./src/**/*.{js,jsx,ts,tsx}", "./node_modules/flowbite/**/*.js"],
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  // content: ["./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
       colors: {
@@ -11,13 +13,5 @@ module.exports = {
       },
     },
   },
-  // plugins: [],
-  // plugins: [require("tailwindcss-dir")()],
   plugins: [require("tailwindcss-rtl")],
-  // variants: {
-  //   float: ["responsive", "direction"],
-  //   margin: ["responsive", "direction"],
-  //   padding: ["responsive", "direction"],
-  //   space: ["responsive", "direction"],
-  // },
 };

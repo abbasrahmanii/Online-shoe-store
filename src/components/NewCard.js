@@ -40,7 +40,7 @@ const NewCard = (props) => {
           </div>
           <div className="price">
             <h3>قیمت : </h3>
-            <p>{shoe.price}</p>
+            <p>{shoe.price} تومان</p>
           </div>
           <Link to={`/shop/shoes/${shoe.id}`}>خرید</Link>
         </div>

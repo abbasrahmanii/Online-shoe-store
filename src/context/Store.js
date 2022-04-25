@@ -71,9 +71,9 @@ const reducer = (state, action) => {
       if (action.payload === "") {
         filtered.sort((a, b) => a.id - b.id);
       } else if (action.payload === "top") {
-        filtered.sort((a, b) => b.price.split(" ")[1] - a.price.split(" ")[1]);
+        filtered.sort((a, b) => b.price - a.price);
       } else if (action.payload === "bottom") {
-        filtered.sort((a, b) => a.price.split(" ")[1] - b.price.split(" ")[1]);
+        filtered.sort((a, b) => a.price - b.price);
       }
       return {
         ...state,

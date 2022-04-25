@@ -73,7 +73,7 @@ const Nav = () => {
             <h1 className="text-white py-1 relative">
               سبد خرید
               {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 text-sky-200 text-sm rounded-full bg-orange-600 w-4 h-4 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 text-sky-200 text-sm rounded-full bg-orange-600 w-5 h-5 flex items-center justify-center">
                   {cart.length}
                 </span>
               )}
