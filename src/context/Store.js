@@ -8,6 +8,7 @@ const initialState = {
   menuStatus: Cookies.get("menuStatus")
     ? JSON.parse(Cookies.get("menuStatus"))
     : false,
+  homeData: data().homeData,
   shoes: data().shoes,
   filteredShoes: Cookies.get("filteredShoes")
     ? JSON.parse(Cookies.get("filteredShoes"))
