@@ -8,8 +8,6 @@ const initialState = {
   menuStatus: Cookies.get("menuStatus")
     ? JSON.parse(Cookies.get("menuStatus"))
     : false,
-  homeData: data().homeData,
-  products: data().products,
   shoes: data().shoes,
   filteredShoes: Cookies.get("filteredShoes")
     ? JSON.parse(Cookies.get("filteredShoes"))
@@ -36,7 +34,6 @@ const reducer = (state, action) => {
               item.id === newProduct.id ? newProduct : item
             )
           : [...state.cart, newProduct];
-      // Cookies.set("cart", JSON.stringify(cartItems));
       Cookies.set("cart", JSON.stringify(cartItems));
       return {
         ...state,

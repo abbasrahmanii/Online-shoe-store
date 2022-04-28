@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +14,7 @@ const Nav = () => {
   const location = useLocation();
 
   return (
-    <NavStyles className="bg-gradient-to-r from-cyan-500 to-indigo-800 flex justify-between sticky top-0 left-0 shadow-lg px-8 items-center h-16">
+    <div className="bg-gradient-to-r from-cyan-500 to-indigo-800 flex justify-between sticky top-0 left-0 shadow-lg px-8 items-center h-16 z-50">
       <FontAwesomeIcon
         icon={faBars}
         size="lg"
@@ -107,12 +106,12 @@ const Nav = () => {
       <Link to="/">
         <img src={logo} alt="nike-logo" className="w-14 object-cover" />
       </Link>
-    </NavStyles>
+    </div>
   );
 };
 
-const NavStyles = styled.div`
-  z-index: 100;
-`;
+// const NavStyles = styled.div`
+//   z-index: 100;
+// `;
 
 export default Nav;

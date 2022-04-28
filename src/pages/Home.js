@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import { Store } from "../context/Store";
@@ -16,105 +15,55 @@ const Home = () => {
     <>
       <Nav />
       <Menu />
-      <HomeStyles
+      <motion.div
         variants={pageAnim}
         initial="hidden"
         animate="show"
         exit="exit"
+        className="flex flex-col w-full bg-slate-900"
       >
         {homeData.map((data) => (
-          <City key={data.id}>
-            <Image
+          <div key={data.id} className="w-full flex flex-wrap py-4 px-8 my-8">
+            <motion.div
               variants={imageAnim}
               initial="hidden"
               animate="show"
               exit="exit"
+              className="flex-1 basis-96 z-40"
             >
-              <img src={data.poster} alt={data.name} />
-            </Image>
-            <Desc variants={descAnim} initial="hidden" animate="show">
-              <Hide>
-                <h1 className="text-center md:text-right">{data.name}</h1>
-                <p className="text-center md:text-right">{data.desc}</p>
+              <img
+                src={data.poster}
+                alt={data.name}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            <motion.div
+              variants={descAnim}
+              initial="hidden"
+              animate="show"
+              className="flex-1 basis-96 mr-8 pr-4"
+            >
+              <motion.div className="overflow-hidden flex flex-col">
+                <h1 className="text-center md:text-right text-4xl font-bold text-gray-300">
+                  {data.name}
+                </h1>
+                <p className="text-center md:text-right text-gray-400 my-12">
+                  {data.desc}
+                </p>
                 <Link
                   to={data.url}
-                  className="rounded-tl-full rounded-b-full self-center md:self-start"
+                  className="rounded-tl-full rounded-b-full self-center md:self-start text-white py-2 px-6 border-2 border-white hover:border-transparent transition-all duration-300 ease-out hover:shadow-lg hover:text-lg"
                   style={{ backgroundColor: data.color }}
                 >
                   خرید ...
                 </Link>
-              </Hide>
-            </Desc>
-          </City>
+              </motion.div>
+            </motion.div>
+          </div>
         ))}
-      </HomeStyles>
+      </motion.div>
     </>
   );
 };
-
-const HomeStyles = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  background-color: #29212e;
-  width: 100%;
-  min-height: 100vh;
-  /* font-family: "Roboto", sans-serif; */
-  z-index: 1;
-`;
-const City = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1rem 2rem;
-  margin: 2rem 0;
-`;
-
-const Image = styled(motion.div)`
-  flex: 1;
-  flex-basis: 25rem;
-  z-index: 50;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const Desc = styled(motion.div)`
-  flex: 1;
-  flex-basis: 25rem;
-  margin-right: 2rem;
-  padding-right: 1rem;
-  h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #eaeaea;
-  }
-  h3 {
-    color: #fff;
-    font-size: 1.4rem;
-  }
-  p {
-    color: #bbb;
-    margin: 3rem 0;
-  }
-  a {
-    color: #fff;
-    border: 1px solid #fff;
-    padding: 0.5rem 1.3rem;
-    transition: all 0.4s ease-out;
-    display: inline;
-    width: max-content;
-    &:hover {
-      border: 1px solid transparent;
-    }
-  }
-`;
-
-const Hide = styled.div`
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-`;
 
 export default Home;

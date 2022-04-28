@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Store } from "../context/Store";
 
+import { Store } from "../context/Store";
 import Nav from "../components/Nav";
 import Menu from "../components/Menu";
 
@@ -97,11 +97,12 @@ const ShoeDetail = () => {
           <div className="flex space-s-4 items-center">
             <h3> رنگ :</h3>
             {shoe.colors.map((color, index) => (
-              <span
-                key={index}
-                className="w-5 h-5 rounded-full"
-                style={{ backgroundColor: color }}
-              ></span>
+              <div key={index}>
+                <span
+                  className="w-5 h-5 rounded-full bg-red-800 block"
+                  style={{ backgroundColor: color }}
+                ></span>
+              </div>
             ))}
           </div>
           <p className="">موجود در انبار : {shoe.numInStock} عدد</p>

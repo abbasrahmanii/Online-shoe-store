@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import { Store } from "../context/Store";
 import Nav from "../components/Nav";
@@ -13,25 +11,6 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  // const addToCartHandler = (product) => {
-  //   const isInStock = products.find((p) => p.id === product.id);
-  //   const existItem = cart.find((p) => p.id === product.id);
-  //   if (
-  //     isInStock.numInStock === 0 ||
-  //     existItem?.quantity === isInStock.numInStock
-  //   ) {
-  //     alert("با عرض پوزش\nموجودی انبار کافی نیست!");
-  //     return;
-  //   }
-  //   const quantity = existItem ? existItem.quantity + 1 : 1;
-  //   const date = new Date().toLocaleString();
-  //   dispatch({ type: "ADD_TO_CART", payload: { ...product, quantity, date } });
-  // };
-
-  // const deleteCartHandler = (product) => {
-  //   const quantity = product.quantity - 1;
-  //   dispatch({ type: "DELETE_CART", payload: { ...product, quantity } });
-  // };
   const deleteAllHandler = (product) => {
     dispatch({ type: "DELETE_CART", payload: { ...product, quantity: 0 } });
   };
@@ -40,7 +19,6 @@ const Cart = () => {
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-slate-700">
       <Nav />
       <Menu />
-      {/* <h1 className="text-white text-center m-4 text-2xl">سبد خرید</h1> */}
       {cart.length < 1 ? (
         <>
           <h3 className="text-white text-center m-2 pt-5">
@@ -110,18 +88,7 @@ const Cart = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600">
-                      {/* <FontAwesomeIcon
-                      icon={faArrowDown}
-                      className="cursor-pointer text-red-400 mx-2"
-                      onClick={() => deleteCartHandler(product)}
-                    />{" "} */}
                       {product.quantity}
-                      {/* {" "}
-                    <FontAwesomeIcon
-                    icon={faArrowUp}
-                    className="cursor-pointer text-green-400 mx-2"
-                    onClick={() => addToCartHandler(product)}
-                    /> */}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600">
                       {product.size}

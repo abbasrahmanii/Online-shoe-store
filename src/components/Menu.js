@@ -13,7 +13,7 @@ import { Store } from "../context/Store";
 
 const Menu = () => {
   const { state, dispatch } = useContext(Store);
-  const { cityData, menuStatus } = state;
+  const { menuStatus } = state;
   const { pathname } = useLocation();
 
   const menuStyle = {

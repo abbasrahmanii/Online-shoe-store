@@ -5,7 +5,6 @@ import queryString from "query-string";
 
 import Nav from "../components/Nav";
 import Menu from "../components/Menu";
-// import Card from "../components/Card";
 import NewCard from "../components/NewCard";
 import Filter from "../components/Filter";
 
@@ -38,9 +37,7 @@ const Shop = () => {
     <div className="min-h-screen bg-gradient-to-b from-dark-background to-indigo-900">
       <Nav />
       <Menu />
-      {/* <div className="w-full flex space-s-8 flex-wrap"> */}
       <div className="grid grid-col-1 md:grid-cols-4 mt-6">
-        {/* <div className="flex flex-col items-center mb-6 w-full md:w-1/5"> */}
         <Filter category={category} />
         {filteredShoes.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 md:col-end-5 md:col-span-3 gap-6 place-items-center mb-10">
