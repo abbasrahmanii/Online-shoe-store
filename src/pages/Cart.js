@@ -22,7 +22,7 @@ const Cart = () => {
       {cart.length < 1 ? (
         <>
           <h3 className="text-white text-center m-2 pt-5">
-            سبد خالی خالی است!
+            سبد خرید خالی است!
           </h3>
           <h5
             className="text-cyan-300 hover:text-blue-300 text-center text-sm m-2 cursor-pointer"

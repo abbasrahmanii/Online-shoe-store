@@ -5,7 +5,7 @@ import queryString from "query-string";
 
 import Nav from "../components/Nav";
 import Menu from "../components/Menu";
-import NewCard from "../components/NewCard";
+import Card from "../components/Card";
 import Filter from "../components/Filter";
 
 const Shop = () => {
@@ -42,7 +42,7 @@ const Shop = () => {
         {filteredShoes.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 md:col-end-5 md:col-span-3 gap-6 place-items-center mb-10">
             {filteredShoes.map((shoe) => (
-              <NewCard
+              <Card
                 shoe={shoe}
                 onClick={() => addToCartHandler(shoe)}
                 key={shoe.id}
